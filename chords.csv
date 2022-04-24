@@ -1,0 +1,75 @@
+name,formula,quality
+Augmented chord,0 4 8,Augmented
+Augmented eleventh chord[1],0 4 7 t 2 6,Major
+Augmented major seventh chord,0 4 8 e,Augmented
+Augmented seventh chord,0 4 8 t,Augmented
+Augmented sixth chord (Italian),0 4 t,Predominant
+Augmented sixth chord (French),0 4 6 t,Predominant
+Augmented sixth chord German),0 4 7 t,Predominant
+Diminished chord,0 3 6,Diminished
+Diminished major seventh chord,0 3 6 e,Diminished
+Diminished seventh chord (leading-tone and secondary chord),0 3 6 9,Diminished
+Dominant,0 4 7,Major
+Dominant eleventh chord,0 4 7 t 2 5,Major
+Dominant minor ninth,0 4 7 t 1,Major
+Dominant ninth,0 4 7 t 2,Major
+Dominant parallel,0 3 7,Minor
+Dominant seventh chord,0 4 7 t,Major
+Dominant seventh flat five chord,0 4 6 t,Diminished
+Dominant seventh sharp nine / Hendrix chord,0 4 7 t 3,Major
+Dominant thirteenth chord,0 4 7 t 2 5 9,Major
+Dream chord,0 5 6 7,Just
+Elektra chord,0 7 9 1 4,Bitonal
+Farben chord,0 8 e 4 9,Atonal
+Half-diminished seventh chord,0 3 6 t,Diminished
+Harmonic seventh chord,0 4 7 t,Major
+Leading-tone triad,0 3 6,Diminished
+Lydian chord,0 4 7 e 6,Major
+Magic chord,0 1 5 6 t 0 3 5,Just
+Major chord,0 4 7,Major
+Major eleventh chord,0 4 7 e 2 5,Major
+Major seventh chord,0 4 7 e,Major
+Major seventh sharp eleventh chord,0 4 8 e 6,Augmented
+Major sixth chord,0 4 7 9,Major
+"Major sixth ninth chord (""6 add 9"",[2] Nine six,[3] 6/9)",0 4 7 9 2,Major
+Major ninth chord,0 4 7 e 2,Major
+Major thirteenth chord,0 4 7 e 2 6 9,Major
+Mediant,0 3 7,Minor
+Minor chord,0 3 7,Minor
+Minor eleventh chord,0 3 7 t 2 5,Minor
+Minor major seventh chord,0 3 7 e,Minor
+Minor ninth chord,0 3 7 t 2,Minor
+Minor seventh chord,0 3 7 t,Minor
+Minor sixth chord,0 3 7 9,Minor
+Minor sixth ninth chord (6/9),0 3 7 9 2,Minor
+Minor thirteenth chord,0 3 7 t 2 5 9,Minor
+Mystic chord,0 6 t 4 9 2,Atonal
+Neapolitan chord,1 5 8,Major
+Ninth augmented fifth chord[2][4],0 4 8 t 2,Augmented
+Ninth flat fifth chord[2],0 4 6 t 2,M3+d5
+Northern lights chord,1 2 8 0 3 6 7 t e 4 7,Atonal
+"""Ode-to-Napoleon"" hexachord",0 1 4 5 8 9,Atonal
+Petrushka chord,0 1 4 6 7 t,Bitonal
+"Power chord
+P5",0 7,Indeterminate
+Psalms chord,0 3 7,Minor
+Secondary dominant,0 4 7,Major
+Secondary leading-tone chord,0 3 6,Diminished
+Secondary supertonic chord,0 3 7,Minor
+Seven six chord[5],0 4 7 9 t,Major
+Seventh suspension four chord[6],0 5 7 t,Suspended
+So What chord,0 5 t 3 7,Bitonal
+Suspended chord,0 5 7,Suspended
+Subdominant,0 4 7,Major
+Subdominant parallel,0 3 7,Minor
+Submediant,0 3 7,Minor
+Subtonic,0 4 7,Major
+Supertonic,0 3 7,Minor
+Thirteenth flat ninth chord[2],0 4 7 t 1 9,Major
+Thirteenth flat ninth flat fifth chord[2],0 4 6 t 1 9,M3+d5
+Tonic counter parallel,0 3 7,Minor
+Tonic,0 4 7,Major
+Tonic parallel,0 3 7,Minor
+Tristan chord,0 3 6 t,Predominant
+Viennese trichord A,0 1 6,Atonal
+Viennese trichord B,0 6 7,Atonal

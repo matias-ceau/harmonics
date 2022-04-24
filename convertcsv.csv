@@ -1,0 +1,69 @@
+Name,Image,Sound,Degrees,Intervals,Integer notation,# of pitch classes,Lower tetrachord,Upper tetrachord,Use of key signature usual or unusual
+15 equal temperament,15-tet scale on C.,Play (help·info),—,—,—,15,—,—,—
+16 equal temperament,16-tet scale on C.,Play (help·info),—,—,—,16,—,—,
+17 equal temperament,17-tet scale on C.,Play (help·info),—,—,—,17,—,—
+19 equal temperament,19-tet scale on C.,Play (help·info),—,—,—,19,—,—
+21 equal temperament,21-tet scale on C.,Play (help·info),—,—,—,21,—,—
+Acoustic scale,Acoustic scale on C.,Play (help·info),1 2 3 ♯4 5 6 ♭7,W-W-W-H-W-H-W,"(0,2,4,6,7,9,10)",7,whole tone,minor,—
+Aeolian mode or natural minor scale,Aeolian on C.,Play (help·info),1 2 ♭3 4 5 ♭6 ♭7,W-H-W-W-H-W-W,"(0,2,3,5,7,8,10)",7,minor,Phrygian,Usual
+Algerian scale,Algerian scale on C.,Play (help·info),1 2 ♭3 ♯4 5 ♭6 7 etc.,W-H-3H-H-H-3H-H-W-H-W,"(0,2,3,6,7,9,11,12,14,15,17)",variable,—,—,—
+Alpha scale,—,Play (help·info),—,—,—,15.39,—,—,—
+Altered scale or Super Locrian scale,Altered scale on C.,Play (help·info),1 ♭2 ♭3 ♭4 ♭5 ♭6 ♭7,H-W-H-W-W-W-W,"(0,1,3,4,6,8,10)",7,diminished,whole tone,—
+Augmented scale,Augmented scale on C.,Play (help·info),1 ♭3 3 5 ♯5 7,3H-H-3H-H-3H-H,"(0,3,4,7,8,11)",6,—,—,—
+Bebop dominant scale,Bebop dominant scale on C.,Play (help·info),1 2 3 4 5 6 ♭7 7,W-W-H-W-W-H-H-H,"(0,2,4,5,7,9,10,11)",8,—,—,—
+Beta scale,—,Play (help·info),—,—,—,18.75,—,—,—
+Blues scale,Blues scale on C.,Play (help·info),1 ♭3 4 ♭5 5 ♭7,3H-W-H-H-3H-W,"(0,3,5,6,7,10)",6,—,—,—
+Bohlen–Pierce scale,—,Play (help·info),—,—,—,—,—,—,—
+Chromatic scale,Chromatic scale on C.,Play (help·info),"1 ♯1 2 ♯2 3 4 ♯4 5 ♯5 6 ♯6 7
+7 ♭7 6 ♭6 5 ♭5 4 3 ♭3 2 ♭2 1",H-H-H-H-H-H-H-H-H-H-H-H,"(0,1,2,3,4,5,6,7,8,9,10,11)",12,—,—,—
+Delta scale,—,Play (help·info),—,—,—,85.7,—,—,—
+Dorian mode,Dorian on C.,Play (help·info),1 2 ♭3 4 5 6 ♭7,W-H-W-W-W-H-W,"(0,2,3,5,7,9,10)",7,minor,minor,Usual
+Double harmonic scale,Double harmonic scale on C.,Play (help·info),1 ♭2 3 4 5 ♭6 7,H-3H-H-W-H-3H-H,"(0,1,4,5,7,8,10)",7,harmonic,harmonic,Unusual
+Enigmatic scale,Enigmatic scale on C.,Play (help·info),1 ♭2 3 ♯4 ♯5 ♯6 7,H-3H-W-W-W-H-H,"(0,1,4,6,8,10,11)",7,,,Unusual
+Euler–Fokker genus,Euler-Fokker genus 337 on C.,Play (help·info),—,—,—,6,—,—,—
+Flamenco mode,Flamenco mode on C.,Play (help·info),1 ♭2 3 4 5 ♭6 7,H-3H-H-W-H-3H-H,"(0,1,4,5,7,8,11)",7,Phrygian,Phrygian,Unusual
+Gamma scale,—,Play (help·info),—,—,—,34.29,—,—,—
+"""Gypsy"" scale","""Gypsy"" [sic] scale on C.",Play (help·info),1 2 ♭3 ♯4 5 ♭6 ♭7,W-H-3H-H-H-W-W,"(0,2,3,6,7,8,10)",7,Gypsy,Phrygian,Unusual
+Half diminished scale,Half diminished scale on C.,Play (help·info),1 2 ♭3 4 ♭5 ♭6 ♭7,W-H-W-H-W-W-W,"(0,2,3,5,6,8,10)",7,minor,whole tone,—
+Harmonic major scale,Harmonic major scale on C.,Play (help·info),1 2 3 4 5 ♭6 7,W-W-H-W-H-3H-H,"(0,2,4,5,7,8,11)",7,major,harmonic,—
+Harmonic minor scale,Harmonic minor scale on C.,Play (help·info),1 2 ♭3 4 5 ♭6 (♮)7,W-H-W-W-H-3H-H,"(0,2,3,5,7,8,11)",7,minor,harmonic,—
+Harmonic Scale,Harmonic scale chromatic on C.,Play (help·info),—,—,—,144,—,—,—
+Hexany,—,—,—,—,—,—,—,—,—
+Hirajoshi scale,Hirajoshi scale on C.,Play (help·info),1 3 ♯4 5 7,2W-W-H-2W-H,"(0,4,6,7,11)",5,—,—,—
+"Hungarian ""Gypsy"" scale/Hungarian minor scale","Hungarian ""Gypsy""[sic] scale on C.",Play (help·info),1 2 ♭3 ♯4 5 ♭6 7,W-H-3H-H-H-3H-H,"(0,2,3,6,7,8,11)",7,Gypsy,harmonic,Unusual
+Hungarian major scale,Hungarian major scale on C.,Play (help·info),1 ♯2 3 ♯4 5 6 ♭7,3H-H-W-H-W-H-W,"(0,3,4,6,7,9,10)",7,—,minor,Unusual
+In scale,"Miyako-bushi scale on D, equivalent to in scale on D, with brackets on fourths.",Play (help·info),1 ♭2 4 5 ♭6,H-2W-W-H-2W,"(0,1,5,7,8)",5,—,—,—
+Insen scale,Insen scale on C.,Play (help·info),1 ♭2 4 5 ♭7,H-2W-W-3H-W,"(0,1,5,7,10)",5,—,—,—
+Ionian mode or major scale,Ionian on C.,Play (help·info),1 2 3 4 5 6 7,W-W-H-W-W-W-H,"(0,2,4,5,7,9,11)",7,major,major,Usual
+Istrian scale,Istrian mode on C.,Play (help·info),1 ♭2 ♭3 ♭4 ♭5 5,H-W-H-W-H-5H,"(0,1,3,4,6,7)",6,diminished,—,—
+Iwato scale,Iwato scale on C.,Play (help·info),1 ♭2 4 ♭5 ♭7,H-2W-H-2W-W,"(0,1,5,6,10)",5,—,—,—
+Locrian mode,Locrian on C.,Play (help·info),1 ♭2 ♭3 4 ♭5 ♭6 ♭7,H-W-W-H-W-W-W,"(0,1,3,5,6,8,10)",7,Phrygian,whole tone,Usual
+Lydian augmented scale,Lydian augmented scale on C.,Play (help·info),1 2 3 ♯4 ♯5 6 7,W-W-W-W-H-W-H,"(0,2,4,6,8,9,11)",7,whole tone,diminished,—
+Lydian mode,Lydian on C.,Play (help·info),1 2 3 ♯4 5 6 7,W-W-W-H-W-W-H,"(0,2,4,6,7,9,11)",7,whole tone,major,Usual
+Major bebop scale,Major bebop scale on C.,Play (help·info),1 2 3 4 5 (♯5/♭6) 6 7,W-W-H-W-(H-H)-W-H,"(0,2,4,5,7,(8),9,11)",7(8),—,—,—
+Major Locrian scale,Major Locrian scale C.,Play (help·info),1 2 3 4 ♭5 ♭6 ♭7,W-W-H-H-W-W-W,"(0,2,4,5,6,8,10)",7,major,whole tone,—
+Major pentatonic scale,Major pentatonic scale on C.,Play (help·info),1 2 3 5 6,W-W-3H-W-3H,"(0,2,4,7,9)",5,—,—,Usual
+Melodic minor scale,"The A melodic minor scale, ascending and descending, on A.",Play (help·info),1 2 ♭3 4 5 ♮6 ♮7 8 ♭7 ♭6 5 4 ♭3 2 1,W-H-W-W-W-W-H (ascending) W-W-H-W-W-H-W (descending),"(0,2,3,5,7,9,11) (ascending) (12,10,8,7,5,3,2) (descending)",9,minor,varies,—
+Melodic minor scale (ascending),Melodic minor scale ascending on A.,Play (help·info),1 2 ♭3 4 5 6 7,W-H-W-W-W-W-H,"(0,2,3,5,7,9,11)",7,minor,major,—
+Minor pentatonic scale,Minor pentatonic scale on A.,Play (help·info),1 ♭3 4 5 ♭7,3H-W-W-3H-W,"(0,3,5,7,10)",5,—,—,Usual
+Mixolydian mode or Adonai malakh mode,Mixolydian on C.,Play (help·info),1 2 3 4 5 6 ♭7,W-W-H-W-W-H-W,"(0,2,4,5,7,9,10)",7,major,minor,Usual
+Neapolitan major scale,Neapolitan major scale on C.,Play (help·info),1 ♭2 ♭3 4 5 6 7,H-W-W-W-W-W-H,"(0,1,3,5,7,9,11)",7,Phrygian,major,Unusual
+Neapolitan minor scale,Neapolitan minor scale on C.,Play (help·info),1 ♭2 ♭3 4 5 ♭6 7,H-W-W-W-H-3H-H,"(0,1,3,5,7,8,11)",7,Phrygian,harmonic,Unusual
+Non-Pythagorean scale,—,Play (help·info),—,—,—,—,—,—,—
+Octatonic scale,Octatonic scales on C.,Play (help·info),"1 2 ♭3 4 ♭5 ♭6 6 7 
+1 ♭2 ♭3 3 ♯4 5 6 ♭7",W-H-W-H-W-H-W-H H-W-H-W-H-W-H,"(0,2,3,5,6,8,9,11) (0,1,3,4,6,7,9,10) || 8 || — || — || —"
+Pelog,Pelog approximated in Western notation.,Play (help·info),—,—,—,—,—,—,—
+Persian scale,Persian scale on C.,Play (help·info),1 ♭2 3 4 ♭5 ♭6 7,H-3H-H-H-W-3H-H,"(0,1,4,5,6,8,11)",7,harmonic,unusual,—
+Phrygian dominant scale,Phrygian dominant on C.,Play (help·info),1 ♭2 3 4 5 ♭6 ♭7,H-3H-H-W-H-W-W,"(0,1,4,5,7,8,10)",7,harmonic,Phrygian,Unusual
+Phrygian mode,Phrygian on C.,Play (help·info),1 ♭2 ♭3 4 5 ♭6 ♭7,H-W-W-W-H-W-W,"(0,1,3,5,7,8,10)",7,Phrygian,Phrygian,Usual
+Prometheus scale,Prometheus scale on C.,Play (help·info),1 2 3 ♯4 6 ♭7,W-W-W-3H-H-W,"(0,2,4,6,9,10)",6,—,—,—
+Quarter tone scale,Quarter tone scale C.,Play (help·info),"1 1 ♯1 1 2 2 ♯2 2 3 3 4 4 ♯4 4 5 5 ♯5 5 6 6 ♯6 6 7 7 
+8 7 7 ♭7 7 6 6 ♭6 6 5 5 ♭5 5 4 4 3 3 ♭3 3 2 2 ♭2 2 1",Q-Q-Q-Q-Q-Q-Q-Q-Q-Q-Q-Q-Q-Q-Q-Q-Q-Q-Q-Q-Q-Q-Q-Q,"(0,1/2,1,3/2,2,5/2, 3,7/2,4,9/2,5,11/2, 6,13/2,7,15/2,8,17/2, 9,19/2,10,21/2,11,23/2)",24,—,—,—
+Scale of harmonics,Scale of harmonics C.,Play (help·info),1 ♭3 3 4 5 6,3H-H-H-W-W-3H,"(0,3,4,5,7,9)",—,—,—,—
+Slendro,Slendro on C compared to a whole tone scale on C.,Play (help·info) or Play (help·info),—,—,—,5,—,—,—
+Tritone scale,Tritone scale on C.,Play (help·info),1 ♭2 3 ♭5 5 ♭7,H-3H-W-H-3H-W,"(0,1,4,6,7,10)",6,—,—,—
+Two-semitone tritone scale,Two-semitone tritone scale on C.,Play (help·info),1 ♭2 ♮2 ♯4 5 ♭6,H-H-4H-H-H-4H,"(0,1,2,6,7,8)",6,—,—,—
+Ukrainian Dorian scale,Ukrainian Dorian mode on C.,Play (help·info),1 2 ♭3 ♯4 5 6 ♭7,W-H-3H-H-W-H-W,"(0,2,3,6,7,9,10)",7,Gypsy,minor,Unusual
+Vietnamese scale of harmonics,Vietnamese scale of harmonics on C.,Play (help·info),1 3 ♭3 ♮3 4 5,5Q-Q-H-H-W,"(0,5/2,3,4,5,7)",6,—,—,—
+Whole tone scale,Whole tone scale on C.,Play (help·info),1 2 3 ♯4 ♯5 ♯6,W-W-W-W-W-W,"(0,2,4,6,8,10)",6,—,—,—
+Yo scale,"Min'yō scale on D, equivalent to yo scale on C, with brackets on fourths.",Play (help·info),1 ♭3 4 5 ♭7,3H-W-W-3H-W,"(0,3,5,7,10)",5,—,—,—
