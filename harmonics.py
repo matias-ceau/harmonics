@@ -3,10 +3,9 @@ import yaml
 class Music():
     with open("config.yaml", "r") as f:
         CFG = yaml.safe_load(f)
-    CFG['IDICT'] = {k:v for k,v in zip(CFG['INAMES'],CFG['IDIST'])}
-    CFG['NDICT'] = {k:v for k,v in zip(CFG['NOTES'],CFG['NDIST'])}
+    IDICT = {k:v for k,v in zip(CFG['INAMES'],CFG['IDIST'])}
+    NDICT = {k:v for k,v in zip(CFG['NOTES'],CFG['NDIST'])}
     INAMES =  CFG['INAMES']
-    IDICT  =  CFG['IDICT']
     INTERVALS =  CFG['INTERVALS']
     SCALES    =  CFG['SCALES']
     
@@ -14,22 +13,25 @@ class Interval(Music):
     
     
     def __init__(self,name):
-        if name in self.INAMES: 
-            self.name     = name
-            self.distance  = self.IDICT[name]
-            if int(self.name.split('b')[-1].split('#')[-1]) > 7: self.distance += 12
-        elif type(name) == Interval: self.__dict__.update(name.__dict__)
-        else: 
-            if type(name) in [tuple,list]:
-                if len(name) == 2 and type(name[0]) == Note:
-                    self.distance = name[1].midi - name[0].midi  
-            else: self.distance  = name
-            candidates     = [a for a,b in self.IDICT.items() if b == self.distance%12]
-            self.name      = candidates[0]
-        self.other_names   = [a for a,b in self.IDICT.items() if b == self.distance%12]
-        for a in self.INTERVALS.keys():
-            self._detect(a)
-        if self.extension: self.octave = 1
+        if isinstance(name,Interval):
+            self.__dict__.update(vars(name))
+            return
+        else:
+            if name in self.INAMES: 
+                self.name     = name
+                self.distance  = self.IDICT[name]
+                if int(self.name.split('b')[-1].split('#')[-1]) > 7: self.distance += 12
+            else: 
+                if type(name) in [tuple,list]:
+                    if len(name) == 2 and type(name[0]) == Note:
+                        self.distance = name[1].midi - name[0].midi  
+                else: self.distance  = name
+                candidates     = [a for a,b in self.IDICT.items() if b == self.distance%12]
+                self.name      = candidates[0]
+            self.other_names   = [a for a,b in self.IDICT.items() if b == self.distance%12]
+            for a in self.INTERVALS.keys():
+                self._detect(a)
+            if self.extension: self.octave = 1
     
     def _detect(self,class_attribute):
         if type(self.INTERVALS[class_attribute][0]) == str:
@@ -66,20 +68,22 @@ class Interval(Music):
 
 class Note(Music):
     DEF_OCTAVE = 4
-    NDICT = Music.CFG['NDICT']
     
-    def __init__(self,n,octave=None,duration=1,volume=90):
-        self.duration = duration
-        self.volume   = volume
-        if type(n) == str:
-            self.name = n
-            if not octave: self.octave = Note.DEF_OCTAVE
-            self.midi = self.NDICT[n] + (self.octave+1)*12
+    def __init__(self,n,octave=None,duration=1,rest=0,volume=90):
+        if isinstance(n,Note): self.__dict__.update(vars(n))
         else:
-            self.midi   = n
-            self.name   = [a for a,b in self.NDICT.items() if n%12 == b][0]
-            self.octave = (self.midi//12)-1
-        self.equivalents = [a for a,b in self.NDICT.items() if self.midi%12 == b]
+            self.duration = duration
+            self.rest = rest
+            self.volume   = volume
+            if type(n) == str:
+                self.name = n
+                if not octave: self.octave = Note.DEF_OCTAVE
+                self.midi = self.NDICT[n] + (self.octave+1)*12
+            else:
+                self.midi   = n
+                self.name   = [a for a,b in self.NDICT.items() if n%12 == b][0]
+                self.octave = (self.midi//12)-1
+            self.equivalents = [a for a,b in self.NDICT.items() if self.midi%12 == b]
     
     def enharmonic(self,spelling='b'):
         if spelling == 'natural': selection = [i for i in self.equivalents if ('b' not in i) & ('#' not in i)]
@@ -120,9 +124,9 @@ class Melody(Music):
     def __init__(self,name=False,notes=False,ref_note=None):
         self.name     = name
         self.notes    = notes
+        if not ref_note: self.ref_note = Note(Melody.DEFAULT_REF)
+        else: self.ref_note = Note(ref_note)
         if self.name:
-            if not ref_note: self.ref_note = Note(Melody.DEFAULT_REF)
-            else: self.ref_note = Note(ref_note)
             self.pattern = Melody.PATTERNS[name]
             self.notes   = [self.ref_note + i for i in self.pattern]  
         if self.notes:
