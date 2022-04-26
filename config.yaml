@@ -82,6 +82,13 @@ SCALES:
     'Yo scale':                    ['1',  'b3', '4',  '5',  'b7']
 
 CHORDS:
+    'I'  :                       [['1', '3' , '5' , '7' , '9' , '11' ,'13'            ] , 'Major']
+    'ii' :                       [['1', 'b3', '5' , 'b7', '9' , '11' ,'13'            ] , 'Minor']
+    'iii':                       [['1', 'b3', '5' , 'b7', 'b9', '11' ,'b13'           ] , 'Minor']
+    'IV' :                       [['1', '3' , '5' , '7' , '9' , '#11','13'            ] , 'Major']
+    'V'  :                       [['1', '3' , '5' , 'b7', '9' , '11' ,'13'            ] , 'Major']
+    'vi' :                       [['1', 'b3', '5' , 'b7', '9' , '11' ,'b13'           ] , 'Minor']
+    'vii':                       [['1', 'b3', 'b5', 'b7', 'b9', '11' ,'b13'           ] , 'Half-dminished']
     "Augmented":                 [['1' , '3' , 'b6'                                   ] , 'Augmented']
     "Augmented 11":              [['1' , '3' , '5' , 'b7', '9' , '#11'                ] , 'Major']
     "Augmented M7":              [['1' , '3' , 'b6', '7'                              ] , 'Augmented']
@@ -157,9 +164,7 @@ CHORDS:
     "Viennese trichord B":       [['1' , '#4', '5'                                    ] , 'Atonal']
 
 INSTRUMENTS:
-    saxophone: {channel: 0, bank:}
-    bass:      {channel: 0, bank:}
-    drums:     {channel: 9, bank:}
+    drum_channel:   9
 
 MIDI_CHANNELS:
     default: 0

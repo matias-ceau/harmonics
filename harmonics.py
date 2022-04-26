@@ -98,7 +98,7 @@ class Pattern(Music):
     CHORDS   = {k : [Interval(i) for i in v[0]] for k,v in Music.CHORDS.items()}
     SCALES   = {k : [Interval(i) for i in v+['1']] for k,v in Music.SCALES.items()}
     PATTERNS = {k : [Interval(i) for i in v] for k,v in Music.PATTERNS.items()}
-    ALL      = {**CHORDS,**SCALES,**PATTERNS}
+    FORMULAS      = {**CHORDS,**SCALES,**PATTERNS}
     
     def __init__(self,name='',notes=None,intervals=None):
         self.name = name ; self.notes = notes ; self.intervals = intervals
@@ -109,7 +109,7 @@ class Pattern(Music):
             except TypeError: pass
         elif name:
             try:
-                intervals_from_start = self.ALL[self.name]              
+                intervals_from_start = self.FORMULAS[self.name]              
                 self.distance  = np.array([(b-a).distance for a,b in zip(intervals_from_start,intervals_from_start[1:])])
                 self.intervals = [Interval(i) for i in self.distance] 
             except KeyError: pass
@@ -128,7 +128,7 @@ class Note(Music):
                  volume   = 100, #units
                  mod      = None,
                  context  = None,
-                 instrument=''):
+                 instrument=None):
         super().__init__()
         if isinstance(n,Note): self.__dict__.update(vars(n))
         else:
@@ -136,8 +136,8 @@ class Note(Music):
             self.rest = rest
             self.volume      = volume
             self.mod         = mod
-            self.instrument  = self._set(instrument)
-            self.context     = self._set(context)
+            self._set_instrument(instrument)
+            self._set_context(context)
             if type(n) == str:
                 if n[-1].isnumeric():
                     self.octave = int(n[-1])
@@ -186,11 +186,16 @@ class Note(Music):
                                                volume     = self.volume,
                                                instrument = self.instrument)
         if type(note) == Note:
-            return Melody(notes=(self,note))
+            return Part(notes=[self,note])
         
-    def _set(self,string):
-        return string
-        
+    def _set_context(self,context):
+        if isinstance(context, Context):  self.context = context
+        else: self.context = Context()
+    
+    def _set_instrument(self,instrument):    
+        if isinstance(instrument, Instrument): self.instrument = instrument
+        else: self.instrument = Instrument()
+            
     def enharmonic(self,spelling='b',name=''):
         if (name != '') and name in self.equivalents:
             self.name = name
@@ -212,24 +217,68 @@ class Note(Music):
         return mido.MidiTrack([on,off])
     
     def append(self,note):
-        if type(note) == Note: return Melody(notes=[self,note])
+        if type(note) == Note: return Part(notes=[self,note])
 
-        
-class Melody(Music):
+class Context(Music):
+    "Harmonic, rhytmic context for a note, used in Part and Song."
+    def __init__(self,key='C',mode=1,time_signature='4:4',chord=None):
+        self.key            = key
+        self.mode           = mode
+        self.time_signature = time_signature
+        self.chord          = chord
+    
+    def __eq__(self, context):
+        if isinstance(context, Context):
+            return (self.key == context.key) & (self.mode == context.mode) & (self.time_signature == context.time_signature) & (self.chord == context.chord)
+     
+class Part(Music):
+    """Melody, bassline or drum part."""
     
     DEFAULT_REF = 'C'
     
-    def __init__(self,name=False, #init pattern
+    def __init__(self,#init pattern
                  notes=False,     #
-                 key=None):
+                 key=None,
+                 part_type=None):
         super().__init__()
-        self.name     = name
         self.notes    = notes
-        self.key = key
-        if self.name:
-            if not self.key: self.key = self.DEFAULT_REF
-            self.notes   = [self.key + i for i in Melody.PATTERNS[name]]  
+        self.key = key 
+        if not self.key: self.key = self.DEFAULT_REF
+        self.part_type = None
         self.respell()
+    
+    def _detect_key(self):
+        try:
+            self.key = self.notes[0].key
+        except FileExistsError:
+            print('erooor')
+            self.key = self.DEFAULT_REF 
+    
+    def __getitem__(self,index):
+        if type(index) == int: return self.notes[index]
+        return Part(notes=self.notes[index],key=self.key,part_type=self.part_type)
+    
+    # def setkey(self,key):
+    #     if not key:
+    #         self.key = Note(Part.DEFAULT_REF)
+    #     else:
+    #         self.key = Note(key)
+    #     self.key = key
+    #     self.relative_to_key
+    
+    def __add__(self,obj):
+        if isinstance(obj, Part):
+            return Part(notes=self.notes+obj.notes,part_type=self.part_type,key=self.key)
+        if isinstance(obj, Note):
+            print(self.notes)
+            print(obj)
+            return Part(notes=self.notes+[obj],part_type=self.part_type,key=self.key)
+            
+    def __contains__(self,note):
+        return [note==n for n in self.notes]                
+
+    def __repr__(self):
+        return str(self.notes)
     
     def respell(self,names=[]):
         if names:
@@ -242,35 +291,17 @@ class Melody(Music):
             if 'b' in str(self.key): _respell('b')
             if '#' in str(self.key): _respell('#')
             _respell('natural')
-    
-    def setkey(self,key):
-        if not key:
-            self.key = Note(Melody.DEFAULT_REF)
-        else:
-            self.key = Note(key)
-        self.key = key
-        self.relative_to_key
-    
-    def __add__(self,obj):
-        if isinstance(obj, Melody):
-            if self.key:
-                return Melody(notes=self.notes+obj.notes)
-            
-    def __contains__(self,note):
-        return [note==n for n in self.notes]                
-
-    def __repr__(self):
-        return str(self.notes)
         
 class Chord(Music):
     DEFAULT_ROOT = 'C'
-    FORMULAS  = {'I'  : [Interval(i) for i in ['1', '3' , '5' , '7' , '9' , '11' ,'13' ]],
-                 'ii' : [Interval(i) for i in ['1', 'b3', '5' , 'b7', '9' , '11' ,'13' ]],
-                 'iii': [Interval(i) for i in ['1', 'b3', '5' , 'b7', 'b9', '11' ,'b13']],
-                 'IV' : [Interval(i) for i in ['1', '3' , '5' , '7' , '9' , '#11','13' ]],
-                 'V'  : [Interval(i) for i in ['1', '3' , '5' , 'b7', '9' , '11' ,'13' ]],
-                 'vi' : [Interval(i) for i in ['1', 'b3', '5' , 'b7', '9' , '11' ,'b13']],
-                 'vii': [Interval(i) for i in ['1', 'b3', 'b5', 'b7', 'b9', '11' ,'b13']]}
+    # FORMULAS  = {'I'  : [Interval(i) for i in ['1', '3' , '5' , '7' , '9' , '11' ,'13' ]],
+    #              'ii' : [Interval(i) for i in ['1', 'b3', '5' , 'b7', '9' , '11' ,'13' ]],
+    #              'iii': [Interval(i) for i in ['1', 'b3', '5' , 'b7', 'b9', '11' ,'b13']],
+    #              'IV' : [Interval(i) for i in ['1', '3' , '5' , '7' , '9' , '#11','13' ]],
+    #              'V'  : [Interval(i) for i in ['1', '3' , '5' , 'b7', '9' , '11' ,'13' ]],
+    #              'vi' : [Interval(i) for i in ['1', 'b3', '5' , 'b7', '9' , '11' ,'b13']],
+    #              'vii': [Interval(i) for i in ['1', 'b3', 'b5', 'b7', 'b9', '11' ,'b13']]}
+    CHORDS   = {k : [Interval(i) for i in v[0]] for k,v in Music.CHORDS.items()}
     
     def __init__(self,chord='',notes=None,root='',key=''):
         super().__init__()
@@ -278,7 +309,7 @@ class Chord(Music):
         self.root = root
         if chord:
             self.chord = chord
-            self.formula = Chord.FORMULAS[chord]
+            self.formula = Chord.CHORDS[chord]
             if not self.root: self.root = Chord.DEFAULT_ROOT
             self.notes   = [Note(i) for i in [Note(self.root).midi + i.distance for i in self.formula]]
         elif notes:
@@ -337,14 +368,18 @@ class Song:
     def get(self,what):
         pass
     
-    def add_melody(self,melody):
+    def add_Part(self,Part):
         pass
 
 class Instrument(Music):
-    def __init__(self,name=None,**kwargs):
-        if name:
-            self.name    = name
-            
-        else:
-            self._readkwargs()
+    INSTRUMENTS   = Music.CFG["INSTRUMENTS"] 
+    MIDI_CHANNELS = Music.CFG['MIDI_CHANNELS']
+    MIDI_GM1      = Music.CFG['MIDI_GM1']
+    MIDI_GM2      = Music.CFG['MIDI_GM2']
+    def __init__(self,name=None,channel=None,bank=None,instrument_type=None):
+        super().__init__()
+        self.name = name
+        self.channel = channel
+        self.bank = bank
+        self.instrument_type = instrument_type
         
