@@ -17,6 +17,12 @@ class Music():
     CHORDS    =  CFG['CHORDS']
     PATTERNS  =  CFG['PATTERNS']
     TUNING    =  CFG['TUNING']
+    INSTRUMENTS   =  CFG["INSTRUMENTS"] 
+    MIDI_CHANNELS =  CFG['MIDI_CHANNELS']
+    MIDI_GM1      =  CFG['MIDI_GM1']
+    MIDI_GM2      =  CFG['MIDI_GM2']
+    MIDI_CC       =  CFG['MIDI_CC']
+    DRUM_KEYMAP   =  CFG['DRUM_KEYMAP']
     
     def __init__(self):
         pass
@@ -153,7 +159,7 @@ class Note(Music):
             # computed
             self.equivalents = [a for a,b in self.NDICT.items() if self.midi%12 == b]
             self.pitch = self.NDICT[self.name]
-            self.MIDI = self.to_midi()
+            #self.MIDI = self.to_midi()
     
     def __eq__(self,note):
         if type(note) == str:
@@ -186,7 +192,7 @@ class Note(Music):
                                                volume     = self.volume,
                                                instrument = self.instrument)
         if type(note) == Note:
-            return Part(notes=[self,note])
+            return Phrase(notes=[self,note])
         
     def _set_context(self,context):
         if isinstance(context, Context):  self.context = context
@@ -217,7 +223,7 @@ class Note(Music):
         return mido.MidiTrack([on,off])
     
     def append(self,note):
-        if type(note) == Note: return Part(notes=[self,note])
+        if type(note) == Note: return Phrase(notes=[self,note])
 
 class Context(Music):
     "Harmonic, rhytmic context for a note, used in Part and Song."
@@ -231,7 +237,7 @@ class Context(Music):
         if isinstance(context, Context):
             return (self.key == context.key) & (self.mode == context.mode) & (self.time_signature == context.time_signature) & (self.chord == context.chord)
      
-class Part(Music):
+class Phrase(Music):
     """Melody, bassline or drum part."""
     
     DEFAULT_REF = 'C'
@@ -256,23 +262,23 @@ class Part(Music):
     
     def __getitem__(self,index):
         if type(index) == int: return self.notes[index]
-        return Part(notes=self.notes[index],key=self.key,part_type=self.part_type)
+        return Phrase(notes=self.notes[index],key=self.key,part_type=self.part_type)
     
     # def setkey(self,key):
     #     if not key:
-    #         self.key = Note(Part.DEFAULT_REF)
+    #         self.key = Note(Phrase.DEFAULT_REF)
     #     else:
     #         self.key = Note(key)
     #     self.key = key
     #     self.relative_to_key
     
     def __add__(self,obj):
-        if isinstance(obj, Part):
-            return Part(notes=self.notes+obj.notes,part_type=self.part_type,key=self.key)
+        if isinstance(obj, Phrase):
+            return Phrase(notes=self.notes+obj.notes,part_type=self.part_type,key=self.key)
         if isinstance(obj, Note):
             print(self.notes)
             print(obj)
-            return Part(notes=self.notes+[obj],part_type=self.part_type,key=self.key)
+            return Phrase(notes=self.notes+[obj],part_type=self.part_type,key=self.key)
             
     def __contains__(self,note):
         return [note==n for n in self.notes]                
@@ -328,37 +334,51 @@ class Chord(Music):
         if self.key:
             pass #right spelling depending on the key
             
-class Song:
+class Song(Music):
     def __init__(self,path=None,bpm=120,clip=True):
-        if path:
+        super().__init__()
+        self.info = []
+        self.path = path
+        self.bpm = bpm
+        self.tempo = mido.bpm2tempo(self.bpm)
+        self.tracks = pd.DataFrame([])
+        if self.path:
             self.MIDI = MidiFile(path,clip=clip)
             self.df   = self._tracks_to_df()
-            tempo = self.df.tempo.dropna().values
-            if len(tempo)== 1:
-                self.tempo = round(tempo[0])
-                self.bpm = mido.tempo2bpm(self.tempo)
-            elif not len(tempo) == 0:
-                self.tempo, self.bpm = None,None
-            else:
-                self.tempo = tempo
-                self.bpm = self.tempo.apply(mido.tempo2bpm)
+            try:
+                tempo = self.df.tempo.dropna().values
+                if len(tempo)== 1:
+                    self.tempo = round(tempo[0])
+                    self.bpm = mido.tempo2bpm(self.tempo)
+                else:
+                    self.tempo = tempo
+                    self.bpm = self.tempo.apply(mido.tempo2bpm)
+            except:
+                self.info.append('No tempo data')
         else:
-            self.MIDI = None
-            self.df = None
-            self.bpm = bpm
-            self.tempo = mido.bpm2tempo(self.bpm)
-   
+            self._default_value()
+            self.MIDI,self.df = None,None
+        
+    def __getitem__(self,string):
+        if string == 'notes':
+            try:
+                return self.df[(self.df.type == 'note_on') | (self.df.type == 'note_off')].dropna(axis=1)
+            except:
+                print('PRobably empty df.')
+    
     def _tracks_to_df(self):
         full_df = pd.DataFrame([])
         for n,track in enumerate(self.MIDI.tracks): 
             df = pd.concat([pd.DataFrame({k: pd.Series([v]) for k,v in a.__dict__.items()}) for a in track],ignore_index=True)
             df['track'] = pd.Series([n]*len(df))
-            df['meta'] = pd.Series([m.is_meta for m in track])
+            df['meta'] = pd.Series([m.is_meta for m in track])    
             if self.MIDI.type == 2:
                 df['ticks'] = np.cumsum(df.time.values)
             full_df = pd.concat([full_df,df])
-        if self.MIDI.type == 1:
+        if self.MIDI.type in (0,1):
             full_df['ticks'] = np.cumsum(full_df.time.values)
+        full_df['beat'] = full_df.ticks/self.MIDI.ticks_per_beat
+        full_df['current_beat'] = np.ceil(full_df.beat)
         return full_df
     
     def export(self,path):
@@ -368,14 +388,11 @@ class Song:
     def get(self,what):
         pass
     
-    def add_Part(self,Part):
+    def add_phrase(self,Phrase):
         pass
 
 class Instrument(Music):
-    INSTRUMENTS   = Music.CFG["INSTRUMENTS"] 
-    MIDI_CHANNELS = Music.CFG['MIDI_CHANNELS']
-    MIDI_GM1      = Music.CFG['MIDI_GM1']
-    MIDI_GM2      = Music.CFG['MIDI_GM2']
+    
     def __init__(self,name=None,channel=None,bank=None,instrument_type=None):
         super().__init__()
         self.name = name
