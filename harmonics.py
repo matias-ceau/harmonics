@@ -3,7 +3,11 @@ import numpy as np
 import pandas as pd
 from mido import MidiFile
 import mido
+import time
 
+def timer(string,t):
+    print(f"{string} took {time.time() - t} seconds")
+    return time.time()
 
 class Music():
     with open("config.yaml", "r") as f:
@@ -335,30 +339,38 @@ class Chord(Music):
             pass #right spelling depending on the key
             
 class Song(Music):
-    def __init__(self,path=None,bpm=120,clip=True):
+    def __init__(self,path=None,bpm=None,clip=True):
         super().__init__()
         self.info = []
         self.path = path
         self.bpm = bpm
-        self.tempo = mido.bpm2tempo(self.bpm)
+        self.tempo = self._midiconvert('tempo',bpm=self.bpm)
         self.tracks = pd.DataFrame([])
         if self.path:
             self.MIDI = MidiFile(path,clip=clip)
-            self.df   = self._tracks_to_df()
-            try:
-                tempo = self.df.tempo.dropna().values
-                if len(tempo)== 1:
-                    self.tempo = round(tempo[0])
-                    self.bpm = mido.tempo2bpm(self.tempo)
-                else:
-                    self.tempo = tempo
-                    self.bpm = self.tempo.apply(mido.tempo2bpm)
-            except:
-                self.info.append('No tempo data')
+            start = time.time()
+            self._extract_midi()
+            timer('extraction', start)
         else:
             self._default_value()
-            self.MIDI,self.df = None,None
-        
+            self.MIDI = None
+            
+    @property
+    def bpm(self):
+        return self._bpm
+    @bpm.setter
+    def bpm(self, val):
+        self._bpm = val
+        self._tempo = self._midiconvert('tempo',bpm=self._bpm)
+
+    @property
+    def tempo(self):
+        return self._tempo
+    @tempo.setter
+    def tempo(self, val):
+        self._tempo = val
+        self._bpm = self._midiconvert('bpm',tempo=self._tempo)        
+                     
     def __getitem__(self,string):
         if string == 'notes':
             try:
@@ -366,20 +378,59 @@ class Song(Music):
             except:
                 print('PRobably empty df.')
     
-    def _tracks_to_df(self):
-        full_df = pd.DataFrame([])
-        for n,track in enumerate(self.MIDI.tracks): 
-            df = pd.concat([pd.DataFrame({k: pd.Series([v]) for k,v in a.__dict__.items()}) for a in track],ignore_index=True)
-            df['track'] = pd.Series([n]*len(df))
-            df['meta'] = pd.Series([m.is_meta for m in track])    
-            if self.MIDI.type == 2:
-                df['ticks'] = np.cumsum(df.time.values)
-            full_df = pd.concat([full_df,df])
-        if self.MIDI.type in (0,1):
-            full_df['ticks'] = np.cumsum(full_df.time.values)
-        full_df['beat'] = full_df.ticks/self.MIDI.ticks_per_beat
-        full_df['current_beat'] = np.ceil(full_df.beat)
-        return full_df
+    def _midiconvert(self,string,tempo=None,bpm=None,beats=None,ticks_per_beat=None,ticks=None,ceil=False,time_signature=None):
+        if string == 'bpm' and tempo: return int(mido.tempo2bpm(tempo))
+        if string == 'tempo' and bpm: return mido.bpm2tempo(bpm)
+        if string == 'beats' and ticks_per_beat and ticks:
+            if ceil: return np.ceil(ticks/ticks_per_beat)
+            else: return ticks/ticks_per_beat
+        if string == 'ticks' and beats and ticks_per_beat: return beats*ticks_per_beat
+        if string == 'bar' and time_signature and beats:
+            if ceil: return np.ceil(beats/int(time_signature.split(':')[0])) 
+            else: return beats/int(time_signature.split(':')[0])
+        else: return None
+        
+    def _extract_midi(self):
+        self.tracks = []
+        for n,track in enumerate(self.MIDI.tracks):
+            time_to_next = np.array([i.time for i in track])
+            tick_time = np.cumsum(time_to_next)
+            beat_time = tick_time/self.MIDI.ticks_per_beat
+            current_beat = np.floor(beat_time)
+            msg = np.array([i.hex() for i in track])
+            msgtranslate = {'8':'note_off',
+                             '9':'note_on',
+                             'A':'aftertouch_poly',
+                             'B':'CC',
+                             'C':'program',
+                             'D':'aftertouch_channel',
+                             'E':'pitch_wheel',
+                             'F':'sysex'}
+            df = pd.DataFrame({'type':    np.array([msgtranslate[i[0]] for i in msg]),
+                          'channel':      np.array([int(i[1],16) for i in msg]),
+                          'data1':        np.array([int(i[3:5],16) for i in msg]),
+                          'data2':        np.array([int(i[6:],16) if len(i[6:])==2 else np.nan for i in msg]),
+                          'tick_time':    tick_time,
+                          'beat_time':    beat_time,
+                          'current_beat': current_beat,
+                          'hex_msg':      msg})
+            off = df[(df.type == 'note_on')&(df.data2 == 0)].index.values
+            df.loc[off,'type'] == 'note_off'
+            self.tracks.append(df)
+        if len(self.tracks) == 1: self.df = self.tracks[0]
+        else: self.df = pd.concat(self.tracks)
+        self.channels = list(set(self.df.channel))
+        # EXTRACT METAMESSAGES
+        self.metamessages = {a.type : a for a in [i for a in self.MIDI.tracks for i in a if i.is_meta]}
+        if 'time_signature' in self.metamessages:
+            ts = self.metamessages['time_signature']
+            self.time_signature = (ts.numerator,ts.denominator)
+        else:
+            self.time_signature = (4,4) ; self.info.append('No time signature in MIDI file, default selected.')
+        if 'set_tempo' in self.metamessages: self.tempo = self.metamessages['set_tempo'].tempo
+        else: self.info.append('No tempo in MIDI file, default selected.')
+        if 'key_signature' in self.metamessages: self.key_signature = self.metamessages['key_signature'].key
+        else: self.key_signature = 'C' ; self.info.append('No key signature in MIDI file, default selected.')
     
     def export(self,path):
         """wrapper for mido object"""
