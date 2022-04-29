@@ -133,21 +133,15 @@ class Note(Music):
     DEF_OCTAVE = 4
     
     def __init__(self,n,
-                 rest     = 0,
                  duration = 1, #unit?
                  volume   = 100, #units
-                 mod      = None,
-                 context  = None,
-                 instrument=None):
+                 mod      = None):
         super().__init__()
         if isinstance(n,Note): self.__dict__.update(vars(n))
         else:
             self.duration = duration
-            self.rest = rest
             self.volume      = volume
             self.mod         = mod
-            self._set_instrument(instrument)
-            self._set_context(context)
             if type(n) == str:
                 if n[-1].isnumeric():
                     self.octave = int(n[-1])
@@ -198,13 +192,6 @@ class Note(Music):
         if type(note) == Note:
             return Phrase(notes=[self,note])
         
-    def _set_context(self,context):
-        if isinstance(context, Context):  self.context = context
-        else: self.context = Context()
-    
-    def _set_instrument(self,instrument):    
-        if isinstance(instrument, Instrument): self.instrument = instrument
-        else: self.instrument = Instrument()
             
     def enharmonic(self,spelling='b',name=''):
         if (name != '') and name in self.equivalents:
