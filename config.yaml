@@ -166,9 +166,18 @@ CHORDS:
 INSTRUMENTS:
     drum_channel:   9
 
-MIDI_CHANNELS:
-    default: 0
-    drums:   9   
+MIDI_CHANNELS: {0:melodic,1:melodic,2:melodic,3:melodic,4:melodic,5:melodic,6:melodic,7:melodic,8:melodic,
+                9:percussion,10:melodic,11:melodic,12:melodic,13:melodic,14:melodic,15:melodic,15:melodic}  
+  
+MIDIMESSAGE:
+    '8': note_off
+    '9': note_on
+    'A': aftertouch_poly
+    'B': CC
+    'C': program
+    'D': aftertouch_channel
+    'E': pitch_wheel
+    'F': sysex
   
 MIDI_GM1:
     Piano:
