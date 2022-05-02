@@ -5,6 +5,7 @@ from mido import MidiFile
 import mido
 import time
 import numba
+import os
 
 # from element import *
 # from properties import *
@@ -25,8 +26,13 @@ def quantitize(n):
     vals = np.array([0, 0.25,  0.33, 0.5, 0.66, 0.75, 0])
     return vals[np.digitize(n,bins)-1]
 
+def freq2pitch(freq): return round(np.log2(freq/440)*12+69)
+def pitch2freq(pitch): return 440*np.power(2,(pitch-69)/12)
+
 class Music:
-    with open("../config.yaml", "r") as f:
+    ROOT_DIR = os.path.dirname(os.path.dirname(__file__))
+    CONFIG_PATH =  os.path.join(ROOT_DIR,'config.yaml')
+    with open(CONFIG_PATH, "r") as f:
         CFG = yaml.safe_load(f)
     IDICT : dict = {k:v for k,v in zip(CFG['INAMES'],CFG['IDIST'])}
     EDICT : dict = {k:v for k,v in zip(CFG['INAMES'],CFG['EXTENSION'])}
@@ -168,22 +174,29 @@ class Pattern():
 class Pitch:
     
     def __init__(self,n):
-        if type(n) == str:
-            if n[-1].isnumeric():
-                self.octave = int(n[-1])
-                self.name = n[:-1]
-            else:
-                self.name = n
-                self.octave = Note.DEF_OCTAVE
-            self.midi = Note.NDICT[self.name] + (self.octave+1)*12
-        else:
+        if type(n) in [int,float]:
             self.midi   = n
-            self.name   = [a for a,b in Note.NDICT.items() if self.midi%12 == b][0]
-            self.octave = (self.midi//12)-1
+        elif type(n) == str:
+            if n[-1] == 'z':
+                self.frequency = float(n[:-2])
+                self.midi = freq2pitch(self.frequency)
+            else:
+                if n[-1].isnumeric():
+                    self.octave = int(n[-1])
+                    self.name = n[:-1]
+                else:
+                    self.name = n
+                    self.octave = Note.DEF_OCTAVE
+                self.midi = Note.NDICT[self.name] + (self.octave+1)*12
+        else:
+            print('wut?')
+        if 'name' not in self.__dict__:   self.name   = [a for a,b in Note.NDICT.items() if self.midi%12 == b][0]
+        if 'octave' not in self.__dict__: self.octave = (self.midi//12)-1
         # computed
         self.equivalents = [a for a,b in Note.NDICT.items() if self.midi%12 == b]
         self.pitch_class = Note.NDICT[self.name]
-        self.frequency   = 440*np.power(2,(self.midi-69)/12)       
+        if 'frequency' not in self.__dict__: self.frequency = pitch2freq(self.midi)
+        self.offpitch  = f'{1200*np.log2(self.frequency/pitch2freq(self.midi))} cents'
         
     def __repr__(self): return self.name
     
