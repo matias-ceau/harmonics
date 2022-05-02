@@ -175,14 +175,15 @@ class Pitch:
             else:
                 self.name = n
                 self.octave = Note.DEF_OCTAVE
-            self.midi = Note.NDICT[n] + (self.octave+1)*12
+            self.midi = Note.NDICT[self.name] + (self.octave+1)*12
         else:
             self.midi   = n
-            self.name   = [a for a,b in Note.NDICT.items() if n%12 == b][0]
+            self.name   = [a for a,b in Note.NDICT.items() if self.midi%12 == b][0]
             self.octave = (self.midi//12)-1
         # computed
         self.equivalents = [a for a,b in Note.NDICT.items() if self.midi%12 == b]
-        self.pitch = Note.NDICT[self.name]
+        self.pitch_class = Note.NDICT[self.name]
+        self.frequency   = 440*np.power(2,(self.midi-69)/12)       
         
     def __repr__(self): return self.name
     
