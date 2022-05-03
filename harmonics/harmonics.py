@@ -29,6 +29,15 @@ def quantitize(n):
 def freq2pitch(freq): return round(np.log2(freq/440)*12+69)
 def pitch2freq(pitch): return 440*np.power(2,(pitch-69)/12)
 
+def find_pattern(arr,seq):
+    Na, Nseq = arr.size, seq.size
+    r_seq = np.arange(Nseq)
+    M = (arr[np.arange(Na-Nseq+1)[:,None] + r_seq] == seq).all(1)
+    if M.any() >0:
+        return np.where(np.convolve(M,np.ones((Nseq),dtype=int))>0)[0]
+    else:
+        return []
+
 class Music:
     ROOT_DIR = os.path.dirname(os.path.dirname(__file__))
     CONFIG_PATH =  os.path.join(ROOT_DIR,'config.yaml')
