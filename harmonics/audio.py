@@ -59,7 +59,7 @@ def audio_plot(x,y,xlabel='',ylabel='',title='',show='all',figsize=(10,4),scatte
     plt.grid()
 
 class Sampler:
-    """Generates sound waves, can base overtones and enveloppe on extracted sample."""
+    """Generates sound waves, can base harmonics and enveloppe on extracted sample."""
     def __init__(self,frequency=440,sample_rate=44100,amplitude=4096,file=None):
         self.frequency      = frequency
         self.sample_rate    = sample_rate
@@ -67,7 +67,7 @@ class Sampler:
         self.file           = file
         self._analyzed      = {'file':[],'data':[],'rel_harmonics':[],'note':[],'offpitch':[],'enveloppe':[],
                                'frequency':[],'duration':[]}
-        self._overtones     = False
+        self._harmonics     = False
         self._enveloppe     = False
         
     @property
@@ -75,13 +75,13 @@ class Sampler:
         return pd.DataFrame({k:pd.Series(v) for k,v in self._analyzed.items()})
     
     @property
-    def overtones(self):
-        return self._overtones
+    def harmonics(self):
+        return self._harmonics
     
-    @overtones.setter
-    def overtones(self,i):
-        if type(i) == int: self._overtones = self.df.loc[i,'rel_harmonics']
-        elif i == False: self._overtones = False
+    @harmonics.setter
+    def harmonics(self,i):
+        if type(i) == int: self._harmonics = self.df.loc[i,'rel_harmonics']
+        elif i == False: self._harmonics = False
     
     @property
     def enveloppe(self):
@@ -97,7 +97,7 @@ class Sampler:
                  freq=None,
                  plot=True,
                  wav=True,
-                 overtones='def',
+                 harmonics='def',
                  enveloppe='def',
                  env_stretch=False,
                  filename='name.wav',
@@ -105,17 +105,17 @@ class Sampler:
                  show='all',
                  s=44100):
         if freq: self.frequency = freq
-        if overtones == 'def': overtones = self.overtones
+        if harmonics == 'def': harmonics = self.harmonics
         if enveloppe == 'def': enveloppe = self.enveloppe
-        if type(overtones) == int: self.overtones = overtones ; overtones = self.overtones
+        if type(harmonics) == int: self.harmonics = harmonics ; harmonics = self.harmonics
         if type(enveloppe) == int: self.enveloppe = enveloppe ; enveloppe = self.enveloppe
-        if not overtones:
+        if not harmonics:
             wave = get_sine(duration,self.frequency,self.amplitude, sample_rate=s)
         else:
-            print('added overtones')
+            print('added harmonics')
             wave = np.sum(\
             [get_sine(duration,A=self.amplitude,F=self.frequency,
-                      aR=a,fR=f,phase=p,sample_rate=s,plot=False) for f,a,p in overtones],axis=0)
+                      aR=a,fR=f,phase=p,sample_rate=s,plot=False) for f,a,p in harmonics],axis=0)
         #def get_sine(duration,F,A=4096,aR=1,fR=1,sample_rate=44100,plot=True)
         if type(enveloppe) == np.ndarray:
             t = np.arange(0,len(wave))
