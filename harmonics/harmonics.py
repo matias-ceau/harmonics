@@ -6,6 +6,7 @@ import mido
 import time
 import numba
 import os
+from dataclasses import dataclass
 
 # from element import *
 # from properties import *
@@ -225,23 +226,41 @@ class Mod:
         self.mod = mod
     def __repr__(self): return str(self.mod)
 
-class Element:
-    is_element = True
+@dataclass
+class NoteData:
+    message_type: str
+    instrument:      int
+    pitch:        int
+    volume:        int
+    duration:     float
 
 
-class Note(Element):
+class Note:
     is_note = True
     DEF_OCTAVE = Music.DEF_OCTAVE
     NDICT = Music.NDICT
     
+    @classmethod
+    def fromData(cls,obj):
+        if obj.message_type == 'note_on':
+            #need to convert duration and maybe change channel to instrument
+            return cls(obj.pitch,
+                       volume     = obj.volume,
+                       duration   = obj.duration,
+                       instrument = obj.instrument)
+    
     def __init__(self,n,
-                 duration = 1, #unit?
-                 volume   = 100, #units
-                 mod      = None):
-        self.pitch     = Pitch(n)
-        self.duration  = Duration(duration)
-        self.volume    = Volume(volume)
-        self.mod       = Mod(mod)
+                 duration    = 1, #unit?
+                 volume      = 100, #units
+                 mod         = None,
+                 kind        = None,
+                 instrument  = 0):
+        self.pitch      = Pitch(n)
+        self.duration   = Duration(duration)
+        self.volume     = Volume(volume)
+        self.mod        = Mod(mod)
+        self.type       = kind
+        self.instrument = Instrument(instrument)
     
     def __eq__(self,note):
         return self.pitch == note
@@ -269,16 +288,20 @@ class Note(Element):
         
             
     def enharmonic(self,spelling='b',name=''):
-        if (name != '') and name in self.equivalents:
+        if (name != '') and name in self.pitch.equivalents:
             self.name = name
-        if spelling == 'natural': selection = [i for i in self.equivalents if ('b' not in i) & ('#' not in i)]
-        else: selection = [i for i in self.equivalents if spelling in i]
+        if spelling == 'natural': selection = [i for i in self.pitch.equivalents if ('b' not in i) & ('#' not in i)]
+        else: selection = [i for i in self.pitch.equivalents if spelling in i]
         if len(selection):
             self.name = selection[0]
     
     
     def append(self,note):
         if type(note) == Note: return Sequence(notes=[self,note])
+        
+    def to_data(self):
+        #if mod also return CC message
+        return NoteData('note_on', self.instrument.name, self.pitch.midi, self.volume.velocity, self.duration.duration)
 
 class Chord(Note):
     DEFAULT_ROOT = Music.DEFAULT_KEY
@@ -338,6 +361,13 @@ class Sequence():
 
     def __repr__(self):
         return str(self.notes)
+    
+    @property
+    def df(self):
+        df = pd.DataFrame([i.to_data() for i in self.notes])
+        df['beat_time'] = 0###########################################""
+        df['miditime']  = [0]+df.duration.to_list()[:-1]
+        
     
     def respell(self,names=[]):
         if names:
@@ -419,7 +449,8 @@ channels: {self.channel_list}
     def _extract_midi(self):
         tracks = []
         for n,track in enumerate(self.MIDI.tracks):
-            time_to_next = np.hstack((np.array([i.time for i in track])[1:],[0]))
+            miditime = np.array([i.time for i in track])
+            time_to_next = np.hstack((miditime[1:],[0]))
             #time_to_next = np.array([i.time for i in track])
             tick_time = np.cumsum(time_to_next)
             msg = np.array([i.hex() for i in track])
@@ -429,6 +460,7 @@ channels: {self.channel_list}
                           'channel':      np.array([int(i[1],16) for i in msg]),
                           'data1':        np.array([int(i[3:5],16) for i in msg]),
                           'data2':        np.array([int(i[6:],16) if len(i[6:])==2 else np.nan for i in msg]),
+                          'miditime':     miditime,
                           'duration':     time_to_next,
                           'tick_time':    tick_time,
                           'hex_msg':      msg})
