@@ -22,22 +22,8 @@ def timer(string,t):
     print(f"{string} took {time.time() - t} seconds")
     return time.time()
 
-def quantitize(n):
-    bins = np.array([0, 0.125, 0.29, 0.4, 0.58, 0.7, 0.875])
-    vals = np.array([0, 0.25,  0.33, 0.5, 0.66, 0.75, 0])
-    return vals[np.digitize(n,bins)-1]
 
-def freq2pitch(freq): return round(np.log2(freq/440)*12+69)
-def pitch2freq(pitch): return 440*np.power(2,(pitch-69)/12)
 
-def find_pattern(arr,seq):
-    Na, Nseq = arr.size, seq.size
-    r_seq = np.arange(Nseq)
-    M = (arr[np.arange(Na-Nseq+1)[:,None] + r_seq] == seq).all(1)
-    if M.any() >0:
-        return np.where(np.convolve(M,np.ones((Nseq),dtype=int))>0)[0]
-    else:
-        return []
 
 class Music:
     ROOT_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -59,12 +45,35 @@ class Music:
     MIDI_GM1      : dict =  CFG['MIDI_GM1']
     MIDI_GM2      : dict =  CFG['MIDI_GM2']
     MIDI_CC       : dict =  CFG['MIDI_CC']
+    DRUM_PROG     : dict = CFG['DRUM_PROG']
     DRUM_KEYMAP   : dict =  CFG['DRUM_KEYMAP']
     DEF_OCTAVE = 4
     DEFAULT_KEY = 'C'
     MIDIMESSAGE = CFG['MIDIMESSAGE']
+    
+    @classmethod
+    def quantitize(cls,n):
+        bins = np.array([0, 0.125, 0.29, 0.4, 0.58, 0.7, 0.875])
+        vals = np.array([0, 0.25,  0.33, 0.5, 0.66, 0.75, 0])
+        return vals[np.digitize(n,bins)-1]
 
-    def _list(self,thing):
+    @classmethod
+    def midi_cc(cls,data1):
+        return Music.MIDI_CC.get(data1)
+    
+    @classmethod
+    def midi_program(cls,channel,data1):
+        if channel == 9:
+            return Music.DRUM_PROG.get(data1)
+        else:
+            return Music.MIDI_GM1.get(data1)
+    
+    @classmethod
+    def midi_drum(cls,midi):
+        return Music.DRUM_KEYMAP.get(midi)
+        
+    @classmethod
+    def _list(cls,thing):
         if type(thing) in (tuple,list,np.ndarray): return thing
         if type(thing) in (str,float,str): return [thing]
 
@@ -161,6 +170,16 @@ class Pattern():
     
     """A sequence of intervals."""
     
+    @classmethod
+    def find_pattern(cls,arr,seq):
+        Na, Nseq = arr.size, seq.size
+        r_seq = np.arange(Nseq)
+        M = (arr[np.arange(Na-Nseq+1)[:,None] + r_seq] == seq).all(1)
+        if M.any() >0:
+            return np.where(np.convolve(M,np.ones((Nseq),dtype=int))>0)[0]
+        else:
+            return []
+    
     def __init__(self,name='',notes=None,intervals=None):
         self.name = name ; self.notes = notes ; self.intervals = intervals
         if notes:
@@ -183,13 +202,27 @@ class Pattern():
     
 class Pitch:
     
+    @classmethod
+    def midi_to_note(cls,midi):
+        return [a for a,b in Note.NDICT.items() if midi%12 == b][0]
+    @classmethod
+    def midi_octave(cls,midi):
+        return (midi//12)-1
+    @classmethod 
+    def midi_to_name(cls,midi):
+        return ''.join([cls.midi_to_note(midi),str(cls.midi_octave(midi))])
+    @classmethod 
+    def freq2pitch(cls,freq): return round(np.log2(freq/440)*12+69)
+    @classmethod 
+    def pitch2freq(cls,pitch): return 440*np.power(2,(pitch-69)/12)
+    
     def __init__(self,n):
         if type(n) in [int,float]:
             self.midi   = n
         elif type(n) == str:
             if n[-1] == 'z':
                 self.frequency = float(n[:-2])
-                self.midi = freq2pitch(self.frequency)
+                self.midi = Pitch.freq2pitch(self.frequency)
             else:
                 if n[-1].isnumeric():
                     self.octave = int(n[-1])
@@ -200,13 +233,13 @@ class Pitch:
                 self.midi = Note.NDICT[self.name] + (self.octave+1)*12
         else:
             print('wut?')
-        if 'name' not in self.__dict__:   self.name   = [a for a,b in Note.NDICT.items() if self.midi%12 == b][0]
-        if 'octave' not in self.__dict__: self.octave = (self.midi//12)-1
+        if 'name' not in self.__dict__:   self.name   = Pitch.midi_to_note(self.midi)
+        if 'octave' not in self.__dict__: self.octave = Pitch.midi_octave(self.midi)
         # computed
         self.equivalents = [a for a,b in Note.NDICT.items() if self.midi%12 == b]
         self.pitch_class = Note.NDICT[self.name]
-        if 'frequency' not in self.__dict__: self.frequency = pitch2freq(self.midi)
-        self.offpitch  = f'{1200*np.log2(self.frequency/pitch2freq(self.midi))} cents'
+        if 'frequency' not in self.__dict__: self.frequency = Pitch.pitch2freq(self.midi)
+        self.offpitch  = f'{1200*np.log2(self.frequency/Pitch.pitch2freq(self.midi))} cents'
         
     def __repr__(self): return self.name
     
@@ -366,7 +399,7 @@ class Sequence():
     def df(self):
         df = pd.DataFrame([i.to_data() for i in self.notes])
         df['beat_time'] = 0###########################################""
-        df['miditime']  = [0]+df.duration.to_list()[:-1]
+        df['_miditime']  = [0]+df._duration.to_list()[:-1]
         
     
     def respell(self,names=[]):
@@ -422,13 +455,45 @@ channels: {self.channel_list}
     @tempo.setter
     def tempo(self, val):
         self._tempo = val
-        self._bpm = self._midi_get('bpm',tempo=self._tempo)        
+        self._bpm = self._midi_get('bpm',tempo=self._tempo)       
+        
+    @property
+    def ticks_per_beat(self):
+        return self.MIDI.ticks_per_beat
+    
+    @property
+    def df(self):
+        return self._df[[i for i in self._df.columns if i[0] != '_']]
+    
+    @property
+    def instr(self):
+        return {i: [a for a in set(self._df[self._df.channel == i].instr) if type(a) != float] #removes np.nan
+                    for i in self.channel_list}
+
+    def notes(self,channel='all'):
+        if channel == 'all': return self.df[self._df.type == 'note_on']
+        else: return self.df[(self._df.type == 'note_on') & (self._df.channel == channel)]
+    
+    def channel(self,channel,meta=False):
+        df = self.df[self.df.channel == channel]
+        if not meta: return df[(df.type == 'note_on') | (df.type == 'note_off')]
+        else: return df
+        
+    def cc(self,channel=None):
+        df = self.df[self.df.type == 'CC']
+        if channel: return df[df.channel == channel]
+        else: return df
+    
+    def prog(self,channel=None):
+        df = self.df[self.df.type == 'program']
+        if channel: return df[df.channel == channel]
+        else: return df
                      
     def get(self,c=None,t=None):
-        if len(self.df):
-            if c and t: return self.df[(self.df.channel == c) & (self.df.type == t)]
-            if c: return self.df[(self.df.channel == c)]
-            if t: return self.df[(self.df.type == t)]
+        if len(self._df):
+            if c and t: return self._df[(self._df.channel == c) & (self._df.type == t)]
+            if c: return self._df[(self._df.channel == c)]
+            if t: return self._df[(self._df.type == t)]
     
     def __getitem__(self,number):
         if type(number) == int:
@@ -449,29 +514,30 @@ channels: {self.channel_list}
     def _extract_midi(self):
         tracks = []
         for n,track in enumerate(self.MIDI.tracks):
-            miditime = np.array([i.time for i in track])
-            time_to_next = np.hstack((miditime[1:],[0]))
+            _miditime = np.array([i.time for i in track]).astype(np.int32)
+            time_to_next = np.hstack((_miditime[1:],[0])).astype(np.int32)
             #time_to_next = np.array([i.time for i in track])
-            tick_time = np.cumsum(time_to_next)
+            tick_time = np.cumsum(_miditime).astype(np.int32)
             msg = np.array([i.hex() for i in track])
             msgtranslate = Music.MIDIMESSAGE
             df = pd.DataFrame({'track': [n]*len(time_to_next),
                           'type':    np.array([msgtranslate[i[0]] for i in msg]),
-                          'channel':      np.array([int(i[1],16) for i in msg]),
-                          'data1':        np.array([int(i[3:5],16) for i in msg]),
-                          'data2':        np.array([int(i[6:],16) if len(i[6:])==2 else np.nan for i in msg]),
-                          'miditime':     miditime,
-                          'duration':     time_to_next,
+                          'channel':      np.array([int(i[1],16) for i in msg],dtype=np.int32),
+                          'data1':        np.array([int(i[3:5],16) for i in msg],dtype=np.int32),
+                          'data2':        np.array([int(i[6:],16) if len(i[6:])==2 else 999 for i in msg],dtype=np.int32),
+                          '_miditime':     _miditime,
+                          '_duration':     time_to_next,
                           'tick_time':    tick_time,
-                          'hex_msg':      msg})
+                          '_hex_msg':      msg})
             off = df[(df.type == 'note_on')&(df.data2 == 0)].index.values
-            df.loc[off,'type'] == 'note_off'
+            df.loc[off,'type'] = 'note_off'
             tracks.append(df)
-        if len(tracks) == 1: self.df = tracks[0]
-        else: self.df = pd.concat(tracks)
+        if len(tracks) == 1: self._df = tracks[0]
+        else: self._df = pd.concat(tracks)
+        self._df.reset_index(inplace=True,drop=True)
         
         # EXTRACT METAMESSAGES
-        self.channel_list = list(set(self.df.channel))
+        self.channel_list = list(set(self._df.channel))
         self.metamessages = {a.type : a for a in [i for a in self.MIDI.tracks for i in a if i.is_meta]}
         if 'time_signature' in self.metamessages:
             ts = self.metamessages['time_signature']
@@ -485,16 +551,52 @@ channels: {self.channel_list}
         
         #COMPUTING RELEVANT INFO
 
-        self.df['beat_time']     = self.df.tick_time/self.MIDI.ticks_per_beat
-        self.df['beat_pos']      = self.df.beat_time%1
-        self.df['curr_beat']     = np.floor(self.df.beat_time.to_numpy())
-        self.df['rel_beat']      = ((self.df.curr_beat.to_numpy() - 1)%self.time_signature[0])+1
-        self.df['bar_time']      = self.df.beat_time.to_numpy()/self.time_signature[0]
-        self.df['curr_bar']      = np.floor(self.df.bar_time.to_numpy())
-        self.df['bar_pos']       = self.df.bar_time.to_numpy()%1
-        f = quantitize
-        self.df['q_beat_p'] = f(self.df.beat_pos.to_numpy())
-    
+        self._df['beat_time']     = np.round(self._df.tick_time/self.MIDI.ticks_per_beat,2)
+        self._df['_beat_pos']      = np.round(self._df.beat_time.to_numpy()%1,2)
+        f = Music.quantitize
+        self._df['q_beat_p']      = f(self._df._beat_pos.to_numpy())
+        self._df['_curr_beat']     = np.floor(self._df.beat_time.to_numpy()).astype(np.int32)+1
+        self._df['rel_beat']      = ((self._df._curr_beat.to_numpy() - 1)%self.time_signature[0])+1
+        self._df['_bar_time']      = np.round(self._df.beat_time.to_numpy()/self.time_signature[0],2)
+        self._df['curr_bar']      = np.array(((self._df._curr_beat - 1)/self.time_signature[0])+1,dtype=np.int32)
+        self._df['bar_pos']       = np.round(self._df._bar_time.to_numpy()%1,2)
+        
+        # TRANSLATE NOTES
+        vm = np.vectorize(Pitch.midi_to_note)
+        vd = np.vectorize(Music.midi_drum)
+        midx = self._df[self._df.channel != 9].index ; didx = self._df[self._df.channel == 9].index
+        if len(midx): self._df.loc[midx,'note'] = vm(self._df.loc[midx,'data1'].to_numpy())
+        if len(didx): self._df.loc[didx,'note'] = vd(self._df.loc[didx,'data1'].to_numpy())
+        else: self._df.loc[:,'note'] = np.nan
+        
+        # GET NOTE DURATION
+        for c in self.channel_list:
+            df = self.channel(c)
+            for n in set(df.data1):
+                d = df[df.data1 == n]
+                #assert len(d[d.type == 'note_on']) == len(d[d.type == 'note_off'])
+                idx_on = d[d.type == 'note_on'].index
+                idx = list(zip(idx_on,d[d.type == 'note_off'].index))
+                _ntdur = np.array([(d.loc[b,'tick_time']-d.loc[a,'tick_time']) for a,b in idx],dtype=np.int32)
+                for n,i in enumerate(idx_on):
+                    self._df.loc[i,'_ntdur'] = int(_ntdur[n])
+        
+        # TRANSLATE PROGRAM CHANGES AND CCS
+        vcc = np.vectorize(Music.midi_cc)
+        cc_idx = self._df[self._df.type == 'CC'].index
+        if len(cc_idx):
+            self._df.loc[cc_idx,'cc'] = vcc(self._df.loc[cc_idx,'data1'].to_numpy())
+        else: self._df.loc[:,'cc'] = np.nan
+        vpr = np.vectorize(Music.midi_program)
+        pr_idx = self._df[self._df.type == 'program'].index
+        if len(pr_idx):
+                self._df.loc[pr_idx,'instr'] = vpr(self._df.loc[pr_idx,'channel'].to_numpy(),
+                                        self._df.loc[pr_idx,'data1'].to_numpy())
+        else:
+            self._df.loc[:,'instr'] = np.nan
+                
+        
+
     def export(self,path):
         """wrapper for mido object"""
         pass

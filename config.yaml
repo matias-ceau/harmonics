@@ -180,554 +180,523 @@ MIDIMESSAGE:
     'F': sysex
   
 MIDI_GM1:
-    Piano:
-        1: Acoustic Grand Piano
-        2: Bright Acoustic Piano
-        3: Electric Grand Piano
-        4: Honky-tonk Piano
-        5: Electric Piano 1 (usually a Rhodes Piano)
-        6: Electric Piano 2 (usually an FM piano patch)
-        7: Harpsichord
-        8: Clavinet
-    Chromatic Percussion:
-        9: Celesta
-        10: Glockenspiel
-        11: Music Box
-        12: Vibraphone
-        13: Marimba
-        14: Xylophone
-        15: Tubular Bells
-        16: Dulcimer
-    Organ:
-        17: Drawbar Organ
-        18: Percussive Organ
-        19: Rock Organ
-        20: Church Organ
-        21: Reed Organ
-        22: Accordion
-        23: Harmonica
-        24: Tango Accordion
-    Guitar:
-        25: Acoustic Guitar (nylon)
-        26: Acoustic Guitar (steel)
-        27: Electric Guitar (jazz)
-        28: Electric Guitar (clean)
-        29: Electric Guitar (muted)
-        30: Electric Guitar (overdriven)
-        31: Electric Guitar (distortion)
-        32: Electric Guitar (harmonics)
-    Bass:
-        33: Acoustic Bass
-        34: Electric Bass (finger)
-        35: Electric Bass (picked)
-        36: Fretless Bass
-        37: Slap Bass 1
-        38: Slap Bass 2
-        39: Synth Bass 1
-        40: Synth Bass 2
-    Strings:
-        41: Violin
-        42: Viola
-        43: Cello
-        44: Contrabass
-        45: Tremolo Strings
-        46: Pizzicato Strings
-        47: Orchestral Harp
-        48: Timpani
-    Ensemble:
-        49: String Ensemble 1
-        50: String Ensemble 2
-        51: Synth Strings 1
-        52: Synth Strings 2
-        53: Choir Aahs
-        54: Voice Oohs (or Doos)
-        55: Synth Voice or Solo Vox
-        56: Orchestra Hit
-    Brass:
-        57: Trumpet
-        58: Trombone
-        59: Tuba
-        60: Muted Trumpet
-        61: French Horn
-        62: Brass Section
-        63: Synth Brass 1
-        64: Synth Brass 2
-    Reed:
-        65: Soprano Sax
-        66: Alto Sax
-        67: Tenor Sax
-        68: Baritone Sax
-        69: Oboe
-        70: English Horn
-        71: Bassoon
-        72: Clarinet
-    Pipe:
-        73: Piccolo
-        74: Flute
-        75: Recorder
-        76: Pan Flute
-        77: Blown bottle
-        78: Shakuhachi
-        79: Whistle
-        80: Ocarina
-    Synth Lead:
-        81: Lead 1 (square)
-        82: Lead 2 (sawtooth)
-        83: Lead 3 (calliope)
-        84: Lead 4 (chiff)
-        85: Lead 5 (charang, a guitar-like lead)
-        86: Lead 6 (space voice)
-        87: Lead 7 (fifths)
-        88: Lead 8 (bass and lead)
-    Synth Pad:
-        89: Pad 1 (new age or fantasia, a warm pad stacked with a bell)
-        90: Pad 2 (warm)
-        91: Pad 3 (polysynth or poly)
-        92: Pad 4 (choir)
-        93: Pad 5 (bowed glass or bowed)
-        94: Pad 6 (metallic)
-        95: Pad 7 (halo)
-        96: Pad 8 (sweep)
-    Synth Effects:
-        97: FX 1 (rain)
-        98: FX 2 (soundtrack, a bright perfect fifth pad)
-        99: FX 3 (crystal)
-        100: FX 4 (atmosphere, usually a nylon-like sound)
-        101: FX 5 (brightness)
-        102: FX 6 (goblins)
-        103: FX 7 (echoes or echo drops)
-        104: FX 8 (sci-fi or star theme)
-    Ethnic:
-        105: Sitar
-        106: Banjo
-        107: Shamisen
-        108: Koto
-        109: Kalimba
-        110: Bag pipe
-        111: Fiddle
-        112: Shanai
-    Percussive:
-        113: Tinkle Bell
-        114: Agogô
-        115: Steel Drums
-        116: Woodblock
-        117: Taiko Drum
-        118: Melodic Tom or 808 Toms
-        119: Synth Drum
-        120: Reverse Cymbal
-    Sound Effects:
-        121: Guitar Fret Noise
-        122: Breath Noise
-        123: Seashore
-        124: Bird Tweet
-        125: Telephone Ring
-        126: Helicopter
-        127: Applause
-        128: Gunshot  
+  0:   Acoustic Grand Piano
+  1:   Bright Acoustic Piano
+  2:   Electric Grand Piano
+  3:   Honky-tonk Piano
+  4:   Electric Piano 1 (usually a Rhodes Piano)
+  5:   Electric Piano 2 (usually an FM piano patch)
+  6:   Harpsichord
+  7:   Clavinet
+  8:   Celesta
+  9:   Glockenspiel
+  10:  Music Box
+  11:  Vibraphone
+  12:  Marimba
+  13:  Xylophone
+  14:  Tubular Bells
+  15:  Dulcimer
+  16:  Drawbar Organ
+  17:  Percussive Organ
+  18:  Rock Organ
+  19:  Church Organ
+  20:  Reed Organ
+  21:  Accordion
+  22:  Harmonica
+  23:  Tango Accordion
+  24:  Acoustic Guitar (nylon)
+  25:  Acoustic Guitar (steel)
+  26:  Electric Guitar (jazz)
+  27:  Electric Guitar (clean)
+  28:  Electric Guitar (muted)
+  29:  Electric Guitar (overdriven)
+  30:  Electric Guitar (distortion)
+  31:  Electric Guitar (harmonics)
+  32:  Acoustic Bass
+  33:  Electric Bass (finger)
+  34:  Electric Bass (picked)
+  35:  Fretless Bass
+  36:  Slap Bass 1
+  37:  Slap Bass 2
+  38:  Synth Bass 1
+  39:  Synth Bass 2
+  40:  Violin
+  41:  Viola
+  42:  Cello
+  43:  Contrabass
+  44:  Tremolo Strings
+  45:  Pizzicato Strings
+  46:  Orchestral Harp
+  47:  Timpani
+  48:  String Ensemble 1
+  49:  String Ensemble 2
+  50:  Synth Strings 1
+  51:  Synth Strings 2
+  52:  Choir Aahs
+  53:  Voice Oohs (or Doos)
+  54:  Synth Voice or Solo Vox
+  55:  Orchestra Hit
+  56:  Trumpet
+  57:  Trombone
+  58:  Tuba
+  59:  Muted Trumpet
+  60:  French Horn
+  61:  Brass Section
+  62:  Synth Brass 1
+  63:  Synth Brass 2
+  64:  Soprano Sax
+  65:  Alto Sax
+  66:  Tenor Sax
+  67:  Baritone Sax
+  68:  Oboe
+  69:  English Horn
+  70:  Bassoon
+  71:  Clarinet
+  72:  Piccolo
+  73:  Flute
+  74:  Recorder
+  75:  Pan Flute
+  76:  Blown bottle
+  77:  Shakuhachi
+  78:  Whistle
+  79:  Ocarina
+  80:  Lead 1 (square)
+  81:  Lead 2 (sawtooth)
+  82:  Lead 3 (calliope)
+  83:  Lead 4 (chiff)
+  84:  Lead 5 (charang, a guitar-like lead)
+  85:  Lead 6 (space voice)
+  86:  Lead 7 (fifths)
+  87:  Lead 8 (bass and lead)
+  88:  Pad 1 (new age or fantasia, a warm pad stacked with a bell)
+  89:  Pad 2 (warm)
+  90:  Pad 3 (polysynth or poly)
+  91:  Pad 4 (choir)
+  92:  Pad 5 (bowed glass or bowed)
+  93:  Pad 6 (metallic)
+  94:  Pad 7 (halo)
+  95:  Pad 8 (sweep)
+  96:  FX 1 (rain)
+  97:  FX 2 (soundtrack, a bright perfect fifth pad)
+  98:  FX 3 (crystal)
+  99:  FX 4 (atmosphere, usually a nylon-like sound)
+  100: FX 5 (brightness)
+  101: FX 6 (goblins)
+  102: FX 7 (echoes or echo drops)
+  103: FX 8 (sci-fi or star theme)
+  104: Sitar
+  105: Banjo
+  106: Shamisen
+  107: Koto
+  108: Kalimba
+  109: Bag pipe
+  110: Fiddle
+  111: Shanai
+  112: Tinkle Bell
+  113: Agogô
+  114: Steel Drums
+  115: Woodblock
+  116: Taiko Drum
+  117: Melodic Tom or 808 Toms
+  118: Synth Drum
+  119: Reverse Cymbal
+  120: Guitar Fret Noise
+  121: Breath Noise
+  122: Seashore
+  123: Bird Tweet
+  124: Telephone Ring
+  125: Helicopter
+  126: Applause
+  127: Gunshot
 
 # General MIDI 2 compatible synthesizers access all of the 256 instruments by setting cc#0 (Bank Select MSB) to 121 and using cc#32 (Bank Select LSB) to select the variation bank before a Program Change. Variation bank 0 contains the full GM — that is, General MIDI 1 — sound set. Variations using other bank numbers are new to General MIDI 2, and correspond to variation sounds introduced in Roland GS.
 
 MIDI_GM2:
-    Piano:
-      1:
-        0:    Acoustic Grand Piano
-        1:    Wide Acoustic Grand
-        2:    Dark Acoustic Grand
-      2:
-        0:    Bright Acoustic Piano
-        1:    Wide Bright Acoustic
-      3:
-        0:    Electric Grand Piano
-        1:    Wide Electric Grand
-      4:
-        0:    Honky-tonk Piano
-        1:    Wide Honky-tonk
-      5:
-        0:    Rhodes Piano
-        1:    Detuned Electric Piano 1
-        2:    Electric Piano 1 Variation
-        3:    60's Electric Piano
-      6:
-        0:    Chorused Electric Piano
-        1:    Detuned Electric Piano 2
-        2:    Electric Piano 2 Variation
-        3:    Electric Piano Legend
-        4:    Electric Piano Phase
-      7:
-        0:    Harpsichord
-        1:    Coupled Harpsichord
-        2:    Wide Harpsichord
-        3:    Open Harpsichord
-      8:
-        0:    Clavinet
-        1:    Pulse Clavinet   
-    Chromatic Percussion:
-      9:
-        0:    Celesta
-      10:    
-        0:    Glockenspiel
-      11:    
-        0:    Music Box
-      12:    
-        0:    Vibraphone
-        1:    Wet Vibraphone
-      13:    
-        0:    Marimba
-        1:    Wide Marimba
-      14:    
-        0:    Xylophone
-      15:
-        0:    Tubular Bell
-        1:    Church Bell
-        2:    Carillon
-      16:
-        0:    Dulcimer/Santur
-    Organ:
-      17:
-        0:    Drawbar Organ
-        1:    Detuned Organ 1
-        2:    60's Organ 1
-        3:    Organ 4
-      18:
-        0:    Percussive B3 Organ
-        1:    Detuned Organ 2
-        2:    Organ 5
-      19:
-        0:    Rock Organ
-      20:
-        0:    Church Organ 1
-        1:    Church Organ 2
-        2:    Church Organ 3
-      21:
-        0:    Reed Organ
-        1:    Puff Organ
-      22:
-        0:    French Accordion
-        1:    Italian Accordion
-      23:    
-        0:    Harmonica
-      24:    
-        0:    Bandoneon   
-    Guitar:
-      25:
-        0:    Nylon-String Guitar
-        1:    Ukulele
-        2:    Open Nylon Guitar
-        3:    Nylon Guitar 2
-      26:    
-        0:    Steel-String Guitar
-        1:    12-String Guitar
-        2:    Mandolin
-        3:    Steel + Body
-      27:
-        0:    Jazz Guitar
-        1:    Hawaiian Guitar
-      28:
-        0:    Clean Electric Guitar
-        1:    Chorus Guitar
-        2:    Mid Tone Guitar
-      29:
-        0:    Muted Electric Guitar
-        1:    Funk Guitar
-        2:    Funk Guitar 2
-        3:    Jazz Man
-      30:
-        0:    Overdriven Guitar
-        1:    Guitar Pinch
-      31:
-        0:    Distortion Guitar
-        1:    Feedback Guitar
-        2:    Distortion Rtm Guitar
-      32:
-        0:    Guitar Harmonics
-        1:    Guitar Feedback   
-    Bass:
-      33:    
-        0: Acoustic Bass
-      34:
-        0:    Fingered Bass
-        1:    Finger Slap
-      35:
-        0:    Picked Bass
-      36:
-        0:    Fretless Bass
-      37:
-        0:    Slap Bass 1
-      38:
-        0:    Slap Bass 2
-      39:
-        0:    Synth Bass 1
-        1:    Synth Bass 101
-        2:    Synth Bass 3
-        3:    Clavi Bass
-        4:    Hammer
-      40:
-        0:    Synth Bass 2
-        1:    Synth Bass 4
-        2:    Rubber Bass
-        3:    Attack Pulse    
-    Orchestra Solo:
-      41:
-        0:    Violin
-        1:    Slow Violin
-      42:
-        0:    Viola
-      43:
-        0:    Cello
-      44:
-        0:    Contrabass
-      45:
-        0:    Tremolo Strings
-      46:
-        0:    Pizzicato Strings
-      47:
-        0:    Harp
-        1:    Yang Qin
-      48:    
-        0:    Timpani 
-    Orchestra Ensemble:
-      49:
-        0:    String Ensemble
-        1:    Orchestra Strings
-        2:    60's Strings
-      50:
-        0:    Slow String Ensemble
-      51:
-        0:    Synth Strings 1
-        1:    Synth Strings 3
-      52:
-        0:    Synth Strings 2
-      53:
-        0:    Choir Aahs
-        1:    Choir Aahs 2
-      54:
-        0:    Voice Oohs
-        1:    Humming
-      55:
-        0:    Synth Voice
-        1:    Analog Voice
-      56:
-        0:    Orchestra Hit
-        1:    Bass Hit
-        2:    6th Hit
-        3:    Euro Hit
-    Brass:
-      57:
-        0:    Trumpet
-        1:    Dark Trumpet
-      58:
-        0:    Trombone
-        1:    Trombone 2
-        2:    Bright Trombone
-      59:
-        0:    Tuba
-      60:
-        0:    Muted Trumpet
-        1:    Muted Trumpet 2
-      61:
-        0:    French Horns
-        1:    French Horn 2
-      62:
-        0:    Brass Section 1
-        1:    Brass Section 2
-      63:
-        0:    Synth Brass 1
-        1:    Synth Brass 3
-        2:    Analog Brass 1
-        3:    Jump Brass
-      64:
-        0:    Synth Brass 2
-        1:    Synth Brass 4
-        2:    Analog Brass 2    
-    Reed:
-      65:
-        0:    Soprano Sax
-      66:
-        0:    Alto Sax
-      67:
-        0:    Tenor Sax
-      68:
-        0:    Baritone Sax
-      69:
-        0:    Oboe
-      70:
-        0:    English Horn
-      71:
-        0:    Bassoon
-      72:
-        0:    Clarinet  
-    Wind:
-      73:    
-        0:    Piccolo
-      74:
-        0:    Flute
-      75:
-        0:    Recorder
-      76:
-        0:    Pan Flute
-      77:
-        0:    Bottle Blow
-      78:
-        0:    Shakuhachi
-      79:
-        0:    Whistle
-      80:
-        0:    Ocarina 
-    Synth Lead:
-      81:
-        0:    Square Lead
-        1:    Square Wave
-        2:    Sine Wave
-      82:
-        0:    Saw Lead
-        1:    Saw Wave
-        2:    Doctor Solo
-        3:    Natural Lead
-        4:    Sequenced Saw
-      83:
-        0:    Synth Calliope
-      84:
-        0:    Chiffer Lead
-      85:
-        0:    Charang
-        1:    Wire Lead
-      86:
-        0:    Solo Synth Vox
-      87:
-        0:    5th Saw Wave
-      88:
-        0:    Bass & Lead
-        1:    Delayed Lead  
-    Synth Pad:
-      89:
-        0:    Fantasia Pad
-      90:
-        0:    Warm Pad
-        1:    Sine Pad
-      91:
-        0:    Polysynth Pad
-      92:
-        0:    Space Voice Pad
-        1:    Itopia
-      93:
-        0:    Bowed Glass Pad
-      94:
-        0:    Metal Pad
-      95:
-        0:    Halo Pad
-      96:
-        0:    Sweep Pad
-    Synth Sound FX:
-      97:
-        0:    Ice Rain
-      98:
-        0:    Soundtrack
-      99:
-        0:    Crystal
-        1:    Synth Mallet
-      100:
-        0:    Atmosphere
-      101:
-        0:    Brightness
-      102:
-        0:    Goblin
-      103:
-        0:    Echo Drops
-        1:    Echo Bell
-        2:    Echo Pan
-      104:
-        0:    Star Theme
-    Ethnic:
-      105:
-        0:    Sitar
-        1:    Sitar 2
-      106:
-        0    Banjo
-      107:
-        0:    Shamisen
-      108:
-        0:    Koto
-        1:    Taisho Koto
-      109:
-        0:    Kalimba
-      110:
-        0:    Bagpipe
-      111:
-        0:    Fiddle
-      112:
-        0:    Shanai
-    Percussive:
-      113:
-        0:    Tinkle Bell
-      114:
-        0:    Agogo
-      115:
-        0:    Steel Drums
-      116:
-        0:    Woodblock
-        1:    Castanets
-      117:
-        0:    Taiko
-        1:    Concert Bass Drum
-      118:
-        0:    Melodic Tom 1
-        1:    Melodic Tom 2
-      119:
-        0:    Synth Drum
-        1:    808 Tom
-        2:    Electric Percussion
-      120:
-        0:    Reverse Cymbal
-    Sound Effect:
-      121:
-        0:    Guitar Fret Noise
-        1:    Guitar Cut Noise
-        2:    String Slap
-      122:
-        0:    Breath Noise
-        1:    Flute Key Click
-      123:
-        0:    Seashore
-        1:    Rain
-        2:    Thunder
-        3:    Wind
-        4:    Stream
-        5:    Bubble
-      124:
-        0:    Bird
-        1:    Dog
-        2:    Horse-Gallop
-        3:    Bird 2
-      125:
-        0:    Telephone 1
-        1:    Telephone 2
-        2:    Door Creaking
-        3:    Door Closing
-        4:    Scratch
-        5:    Wind Chimes
-      126:
-        0:    Helicopter
-        1:    Car-Engine
-        2:    Car-Stop
-        3:    Car-Pass
-        4:    Car-Crash
-        5:    Siren
-        6:    Train
-        7:    Jetplane
-        8:    Starship
-        9:    Burst Noise
-      127:
-        0:    Applause
-        1:    Laughing
-        2:    Screaming
-        3:    Punch
-        4:    Heart Beat
-        5:    Footsteps
-      128:
-        0:    Gun Shot
-        1:    Machine Gun
-        2:    Lasergun
-        3:    Explosion
+    0:
+      0: Acoustic Grand Piano
+      1: Wide Acoustic Grand
+      2: Dark Acoustic Grand
+    1:
+      0: Bright Acoustic Piano
+      1: Wide Bright Acoustic
+    2:
+      0: Electric Grand Piano
+      1: Wide Electric Grand
+    3:
+      0: Honky-tonk Piano
+      1: Wide Honky-tonk
+    4:
+      0: Rhodes Piano
+      1: Detuned Electric Piano 1
+      2: Electric Piano 1 Variation
+      3: 60's Electric Piano
+    5:
+      0: Chorused Electric Piano
+      1: Detuned Electric Piano 2
+      2: Electric Piano 2 Variation
+      3: Electric Piano Legend
+      4: Electric Piano Phase
+    6:
+      0: Harpsichord
+      1: Coupled Harpsichord
+      2: Wide Harpsichord
+      3: Open Harpsichord
+    7:
+      0: Clavinet
+      1: Pulse Clavinet
+    8:
+      0: Celesta
+    9:
+      0: Glockenspiel
+    10:
+      0: Music Box
+    11:
+      0: Vibraphone
+      1: Wet Vibraphone
+    12:
+      0: Marimba
+      1: Wide Marimba
+    13:
+      0: Xylophone
+    14:
+      0: Tubular Bell
+      1: Church Bell
+      2: Carillon
+    15:
+      0: Dulcimer/Santur
+    16:
+      0: Drawbar Organ
+      1: Detuned Organ 1
+      2: 60's Organ 1
+      3: Organ 4
+    17:
+      0: Percussive B3 Organ
+      1: Detuned Organ 2
+      2: Organ 5
+    18:
+      0: Rock Organ
+    19:
+      0: Church Organ 1
+      1: Church Organ 2
+      2: Church Organ 3
+    20:
+      0: Reed Organ
+      1: Puff Organ
+    21:
+      0: French Accordion
+      1: Italian Accordion
+    22:
+      0: Harmonica
+    23:
+      0: Bandoneon
+    24:
+      0: Nylon-String Guitar
+      1: Ukulele
+      2: Open Nylon Guitar
+      3: Nylon Guitar 2
+    25:
+      0: Steel-String Guitar
+      1: 12-String Guitar
+      2: Mandolin
+      3: Steel + Body
+    26:
+      0: Jazz Guitar
+      1: Hawaiian Guitar
+    27:
+      0: Clean Electric Guitar
+      1: Chorus Guitar
+      2: Mid Tone Guitar
+    28:
+      0: Muted Electric Guitar
+      1: Funk Guitar
+      2: Funk Guitar 2
+      3: Jazz Man
+    29:
+      0: Overdriven Guitar
+      1: Guitar Pinch
+    30:
+      0: Distortion Guitar
+      1: Feedback Guitar
+      2: Distortion Rtm Guitar
+    31:
+      0: Guitar Harmonics
+      1: Guitar Feedback
+    32:
+      0: Acoustic Bass
+    33:
+      0: Fingered Bass
+      1: Finger Slap
+    34:
+      0: Picked Bass
+    35:
+      0: Fretless Bass
+    36:
+      0: Slap Bass 1
+    37:
+      0: Slap Bass 2
+    38:
+      0: Synth Bass 1
+      1: Synth Bass 101
+      2: Synth Bass 3
+      3: Clavi Bass
+      4: Hammer
+    39:
+      0: Synth Bass 2
+      1: Synth Bass 4
+      2: Rubber Bass
+      3: Attack Pulse
+    40:
+      0: Violin
+      1: Slow Violin
+    41:
+      0: Viola
+    42:
+      0: Cello
+    43:
+      0: Contrabass
+    44:
+      0: Tremolo Strings
+    45:
+      0: Pizzicato Strings
+    46:
+      0: Harp
+      1: Yang Qin
+    47:
+      0: Timpani
+    48:
+      0: String Ensemble
+      1: Orchestra Strings
+      2: 60's Strings
+    49:
+      0: Slow String Ensemble
+    50:
+      0: Synth Strings 1
+      1: Synth Strings 3
+    51:
+      0: Synth Strings 2
+    52:
+      0: Choir Aahs
+      1: Choir Aahs 2
+    53:
+      0: Voice Oohs
+      1: Humming
+    54:
+      0: Synth Voice
+      1: Analog Voice
+    55:
+      0: Orchestra Hit
+      1: Bass Hit
+      2: 6th Hit
+      3: Euro Hit
+    56:
+      0: Trumpet
+      1: Dark Trumpet
+    57:
+      0: Trombone
+      1: Trombone 2
+      2: Bright Trombone
+    58:
+      0: Tuba
+    59:
+      0: Muted Trumpet
+      1: Muted Trumpet 2
+    60:
+      0: French Horns
+      1: French Horn 2
+    61:
+      0: Brass Section 1
+      1: Brass Section 2
+    62:
+      0: Synth Brass 1
+      1: Synth Brass 3
+      2: Analog Brass 1
+      3: Jump Brass
+    63:
+      0: Synth Brass 2
+      1: Synth Brass 4
+      2: Analog Brass 2
+    64:
+      0: Soprano Sax
+    65:
+      0: Alto Sax
+    66:
+      0: Tenor Sax
+    67:
+      0: Baritone Sax
+    68:
+      0: Oboe
+    69:
+      0: English Horn
+    70:
+      0: Bassoon
+    71:
+      0: Clarinet
+    72:
+      0: Piccolo
+    73:
+      0: Flute
+    74:
+      0: Recorder
+    75:
+      0: Pan Flute
+    76:
+      0: Bottle Blow
+    77:
+      0: Shakuhachi
+    78:
+      0: Whistle
+    79:
+      0: Ocarina
+    80:
+      0: Square Lead
+      1: Square Wave
+      2: Sine Wave
+    81:
+      0: Saw Lead
+      1: Saw Wave
+      2: Doctor Solo
+      3: Natural Lead
+      4: Sequenced Saw
+    82:
+      0: Synth Calliope
+    83:
+      0: Chiffer Lead
+    84:
+      0: Charang
+      1: Wire Lead
+    85:
+      0: Solo Synth Vox
+    86:
+      0: 5th Saw Wave
+    87:
+      0: Bass & Lead
+      1: Delayed Lead
+    88:
+      0: Fantasia Pad
+    89:
+      0: Warm Pad
+      1: Sine Pad
+    90:
+      0: Polysynth Pad
+    91:
+      0: Space Voice Pad
+      1: Itopia
+    92:
+      0: Bowed Glass Pad
+    93:
+      0: Metal Pad
+    94:
+      0: Halo Pad
+    95:
+      0: Sweep Pad
+    96:
+      0: Ice Rain
+    97:
+      0: Soundtrack
+    98:
+      0: Crystal
+      1: Synth Mallet
+    99:
+      0: Atmosphere
+    100:
+      0: Brightness
+    101:
+      0: Goblin
+    102:
+      0: Echo Drops
+      1: Echo Bell
+      2: Echo Pan
+    103:
+      0: Star Theme
+    104:
+      0: Sitar
+      1: Sitar 2
+    105:
+      0: Banjo
+    106:
+      0: Shamisen
+    107:
+      0: Koto
+      1: Taisho Koto
+    108:
+      0: Kalimba
+    109:
+      0: Bagpipe
+    110:
+      0: Fiddle
+    111:
+      0: Shanai
+    112:
+      0: Tinkle Bell
+    113:
+      0: Agogo
+    114:
+      0: Steel Drums
+    115:
+      0: Woodblock
+      1: Castanets
+    116:
+      0: Taiko
+      1: Concert Bass Drum
+    117:
+      0: Melodic Tom 1
+      1: Melodic Tom 2
+    118:
+      0: Synth Drum
+      1: 808 Tom
+      2: Electric Percussion
+    119:
+      0: Reverse Cymbal
+    120:
+      0: Guitar Fret Noise
+      1: Guitar Cut Noise
+      2: String Slap
+    121:
+      0: Breath Noise
+      1: Flute Key Click
+    122:
+      0: Seashore
+      1: Rain
+      2: Thunder
+      3: Wind
+      4: Stream
+      5: Bubble
+    123:
+      0: Bird
+      1: Dog
+      2: Horse-Gallop
+      3: Bird 2
+    124:
+      0: Telephone 1
+      1: Telephone 2
+      2: Door Creaking
+      3: Door Closing
+      4: Scratch
+      5: Wind Chimes
+    125:
+      0: Helicopter
+      1: Car-Engine
+      2: Car-Stop
+      3: Car-Pass
+      4: Car-Crash
+      5: Siren
+      6: Train
+      7: Jetplane
+      8: Starship
+      9: Burst Noise
+    126:
+      0: Applause
+      1: Laughing
+      2: Screaming
+      3: Punch
+      4: Heart Beat
+      5: Footsteps
+    127:
+      0: Gun Shot
+      1: Machine Gun
+      2: Lasergun
+      3: Explosion
+
   
 DRUM_KEYMAP:
     35: Acoustic Bass Drum
@@ -778,58 +747,144 @@ DRUM_KEYMAP:
     80: Mute Triangle
     81: Open Triangle
 
+DRUM_PROG:
+   0:  Standard Kit 
+   8:  Room Kit    
+   16: Power Kit 
+   24: Electronic Kit 
+   25: TR-808 Kit 
+   32: Jazz Kit 
+   40: Brush Kit 
+   48: Orchestra Kit 
+   56: Sound FX Kit 
+
+
 MIDI_CC:    
-    0: Bank Select (MSB)
-    1: Modulation Wheel
-    2: Breath controller
-    4: Foot Pedal (MSB)
-    5: Portamento Time (MSB)
-    6: Data Entry (MSB)
-    7: Volume (MSB)
-    8: Balance (MSB
-    10: Pan position (MSB)
-    11: Expression (MSB)
-    12: Effect Control 1 (MSB)
-    13: Effect Control 2 (MSB)
-    16-19: = General Purpose
-    32-63: = Controller 0-31
-    64: Hold Pedal (on/off)
-    65: Portamento (on/off)
-    66: Sostenuto Pedal (on/off)
-    67: Soft Pedal (on/off)
-    68: Legato Pedal (on/off)
-    69: Hold 2 Pedal (on/off)
-    70: Sound Variation
-    71: Resonance (Timbre)
-    72: Sound Release Time
-    73: Sound Attack Time
-    74: Frequency Cutoff (Brightness)
-    75: Sound Control 6
-    76: Sound Control 7
-    77: Sound Control 8
-    78: Sound Control 9
-    79: Sound Control 10
-    80: Decay or General Purpose Button 1 (on/off) Roland Tone level 1
-    81: Hi Pass Filter Frequency or General Purpose Button 2 (on/off) Roland Tone level 2
-    82: General Purpose Button 3 (on/off) Roland Tone level 3
-    83: General Purpose Button 4 (on/off) Roland Tone level 4
-    84: Portamento Amount
-    91: Reverb Level
-    92: Tremolo Level
-    93: Chorus Level
-    94: Detune Level
-    95: Phaser Level
-    96: Data Button increment
-    97: Data Button decrement
-    98: Non-registered Parameter (LSB)
-    99: Non-registered Parameter (MSB)
-    100: Registered Parameter (LSB)
-    101: Registered Parameter (MSB)
-    120: All Sound Off
-    121: All Controllers Off
-    122: Local Keyboard (on/off)
-    123: All Notes Off
-    124: Omni Mode Off
-    125: Omni Mode On
-    126: Mono Operation
-    127: Poly Mode
+  0: 'Bank Select (MSB)'
+  1: 'Modulation Wheel or Lever (MSB)'
+  2: 'Breath Controller (MSB)'
+  3: 'Undefined (MSB)'
+  4: 'Foot Controller (MSB)'
+  5: 'Portamento Time (MSB)'
+  6: 'Data Entry MSB (MSB)'
+  7: 'Channel Volume (formerly Main Volume) (MSB)'
+  8: 'Balance (MSB)'
+  9: 'Undefined (MSB)'
+  10: 'Pan (MSB)'
+  11: 'Expression Controller (MSB)'
+  12: 'Effect Control 1 (MSB)'
+  13: 'Effect Control 2 (MSB)'
+  14: 'Undefined (MSB)'
+  15: 'Undefined (MSB)'
+  16: 'General Purpose Controller 1 (MSB)'
+  17: 'General Purpose Controller 2 (MSB)'
+  18: 'General Purpose Controller 3 (MSB)'
+  19: 'General Purpose Controller 4 (MSB)'
+  20: 'Undefined (MSB)'
+  21: 'Undefined (MSB)'
+  22: 'Undefined (MSB)'
+  23: 'Undefined (MSB)'
+  24: 'Undefined (MSB)'
+  25: 'Undefined (MSB)'
+  26: 'Undefined (MSB)'
+  27: 'Undefined (MSB)'
+  28: 'Undefined (MSB)'
+  29: 'Undefined (MSB)'
+  30: 'Undefined (MSB)'
+  31: 'Undefined (MSB)'
+  32: 'LSB for Control 0 (Bank Select) (LSB)'
+  33: 'LSB for Control 1 (Modulation Wheel or Lever) (LSB)'
+  34: 'LSB for Control 2 (Breath Controller) (LSB)'
+  35: 'LSB for Control 3 (Undefined) (LSB)'
+  36: 'LSB for Control 4 (Foot Controller) (LSB)'
+  37: 'LSB for Control 5 (Portamento Time) (LSB)'
+  38: 'LSB for Control 6 (Data Entry) (LSB)'
+  39: 'LSB for Control 7 (Channel Volume, formerly Main Volume) (LSB)'
+  40: 'LSB for Control 8 (Balance) (LSB)'
+  41: 'LSB for Control 9 (Undefined) (LSB)'
+  42: 'LSB for Control 10 (Pan) (LSB)'
+  43: 'LSB for Control 11 (Expression Controller) (LSB)'
+  44: 'LSB for Control 12 (Effect control 1) (LSB)'
+  45: 'LSB for Control 13 (Effect control 2) (LSB)'
+  46: 'LSB for Control 14 (Undefined) (LSB)'
+  47: 'LSB for Control 15 (Undefined) (LSB)'
+  48: 'LSB for Control 16 (General Purpose Controller 1) (LSB)'
+  49: 'LSB for Control 17 (General Purpose Controller 2) (LSB)'
+  50: 'LSB for Control 18 (General Purpose Controller 3) (LSB)'
+  51: 'LSB for Control 19 (General Purpose Controller 4) (LSB)'
+  52: 'LSB for Control 20 (Undefined) (LSB)'
+  53: 'LSB for Control 21 (Undefined) (LSB)'
+  54: 'LSB for Control 22 (Undefined) (LSB)'
+  55: 'LSB for Control 23 (Undefined) (LSB)'
+  56: 'LSB for Control 24 (Undefined) (LSB)'
+  57: 'LSB for Control 25 (Undefined) (LSB)'
+  58: 'LSB for Control 26 (Undefined) (LSB)'
+  59: 'LSB for Control 27 (Undefined) (LSB)'
+  60: 'LSB for Control 28 (Undefined) (LSB)'
+  61: 'LSB for Control 29 (Undefined) (LSB)'
+  62: 'LSB for Control 30 (Undefined) (LSB)'
+  63: 'LSB for Control 31 (Undefined) (LSB)'
+  64: 'Damper Pedal on/off (Sustain)'
+  65: 'Portamento On/Off'
+  66: 'Sostenuto On/Off'
+  67: 'Soft Pedal On/Off'
+  68: 'Legato Footswitch'
+  69: 'Hold 2'
+  70: 'Sound Controller 1 (default: Sound Variation) (LSB)'
+  71: 'Sound Controller 2 (default: Timbre/Harmonic Intens.) (LSB)'
+  72: 'Sound Controller 3 (default: Release Time) (LSB)'
+  73: 'Sound Controller 4 (default: Attack Time) (LSB)'
+  74: 'Sound Controller 5 (default: Brightness) (LSB)'
+  75: 'Sound Controller 6 (default: Decay Time - see MMA RP-021) (LSB)'
+  76: 'Sound Controller 7 (default: Vibrato Rate - see MMA RP-021) (LSB)'
+  77: 'Sound Controller 8 (default: Vibrato Depth - see MMA RP-021) (LSB)'
+  78: 'Sound Controller 9 (default: Vibrato Delay - see MMA RP-021) (LSB)'
+  79: 'Sound Controller 10 (default undefined - see MMA RP-021) (LSB)'
+  80: 'General Purpose Controller 5 (LSB)'
+  81: 'General Purpose Controller 6 (LSB)'
+  82: 'General Purpose Controller 7 (LSB)'
+  83: 'General Purpose Controller 8 (LSB)'
+  84: 'Portamento Control (LSB)'
+  85: 'Undefined'
+  86: 'Undefined'
+  87: 'Undefined'
+  88: 'High Resolution Velocity Prefix (LSB)'
+  89: 'Undefined'
+  90: 'Undefined'
+  91: 'Effects 1 Depth  (default: Reverb Send Level - see MMA RP-023)  (formerly External Effects Depth)'
+  92: 'Effects 2 Depth (formerly Tremolo Depth)'
+  93: 'Effects 3 Depth  (default: Chorus Send Level - see MMA RP-023)  (formerly Chorus Depth)'
+  94: 'Effects 4 Depth (formerly Celeste [Detune] Depth)'
+  95: 'Effects 5 Depth (formerly Phaser Depth)'
+  96: 'Data Increment (Data Entry +1) (see MMA RP-018)'
+  97: 'Data Decrement (Data Entry -1) (see MMA RP-018)'
+  98: 'Non-Registered Parameter Number (NRPN) - LSB (LSB)'
+  99: 'Non-Registered Parameter Number (NRPN) - MSB (MSB)'
+  100: 'Registered Parameter Number (RPN) - LSB* (LSB)'
+  101: 'Registered Parameter Number (RPN) - MSB* (MSB)'
+  102: 'Undefined'
+  103: 'Undefined'
+  104: 'Undefined'
+  105: 'Undefined'
+  106: 'Undefined'
+  107: 'Undefined'
+  108: 'Undefined'
+  109: 'Undefined'
+  110: 'Undefined'
+  111: 'Undefined'
+  112: 'Undefined'
+  113: 'Undefined'
+  114: 'Undefined'
+  115: 'Undefined'
+  116: 'Undefined'
+  117: 'Undefined'
+  118: 'Undefined'
+  119: 'Undefined'
+  120:  'All Sound Off'
+  121:  'Reset All Controllers'
+  122:  'Local Control (on/off)'
+  123:  'All Notes Off'
+  124:  'Omni Mode Off'
+  125:  'Omni Mode On'
+  126:  'Mono Mode On'
+  127:  'Poly Mode On'
