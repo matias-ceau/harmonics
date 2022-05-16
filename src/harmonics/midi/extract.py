@@ -218,14 +218,11 @@ channels: {self.channel_list}
         vd = np.vectorize(MidiUtils.midi_drum)
         midx = self._df[self._df.channel != 9].index
         didx = self._df[self._df.channel == 9].index
+        self._df.loc[:, 'note'] = ''
         if len(midx):
-            self._df.loc[midx, 'note'] = vm(
-                self._df.loc[midx, 'data1'].to_numpy())
+            self._df.loc[midx, 'note'] = vm(self._df.loc[midx, 'data1'])
         if len(didx):
-            self._df.loc[didx, 'note'] = vd(
-                self._df.loc[didx, 'data1'].to_numpy())
-        else:
-            self._df.loc[:, 'note'] = np.nan
+            self._df.loc[didx, 'note'] = vd(self._df.loc[didx, 'data1'])
 
         # GET NOTE DURATION
         for c in self.channel_list:
@@ -243,24 +240,18 @@ channels: {self.channel_list}
         # TRANSLATE PROGRAM CHANGES AND CCS
         vcc = np.vectorize(MidiUtils.midi_cc)
         cc_idx = self._df[self._df.type == 'CC'].index
+        self._df.loc[:, 'cc'] = ''
         if len(cc_idx):
             self._df.loc[cc_idx, 'cc'] = vcc(
                 self._df.loc[cc_idx, 'data1'].to_numpy())
-        else:
-            self._df.loc[:, 'cc'] = np.nan
         vpr = np.vectorize(MidiUtils.midi_program)
+
         pr_idx = self._df[self._df.type == 'program'].index
+        self._df.loc[:, 'instr'] = ''
         if len(pr_idx):
             self._df.loc[pr_idx, 'instr'] = vpr(
                 self._df.loc[pr_idx, 'channel'].to_numpy(),
                 self._df.loc[pr_idx, 'data1'].to_numpy()
                 )
-        else:
-            self._df.loc[:, 'instr'] = np.nan
+        # TODO expand instrument on all channel ?
 
-    def export(self, path):
-        """wrapper for mido object"""
-        pass
-
-    def add_phrase(self, Phrase):
-        pass

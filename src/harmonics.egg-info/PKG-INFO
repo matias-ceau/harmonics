@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: harmonics
+Version: 0.0.0
+Summary: Music Analysis and Creation
+Home-page: https://github.com/matias-ceau/harmonics
+Author: Matias Ceau
+Author-email: matias@ceau.net
+License: GPLv3
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: Unix
+Classifier: Intended Audience :: Science/Research
+Description-Content-Type: text/markdown
+License-File: LICENSE
