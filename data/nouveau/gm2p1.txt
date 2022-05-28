@@ -1,0 +1,62 @@
+27 (D#) @ @ @
+28 (E) @ @ @
+29 (F) @ @ @
+30 (F#) @ @ @
+31 (G) @ @ @
+32 (G#) @ @ @
+33 (A) @ @ @
+34 (A#) @ @ @
+35 (B) @ @ Jazz Kick 2 64
+36 (C) Electric Bass Drum 64 Analog Bass Drum 64 Jazz Kick 1 64
+37 (C#) @ Analog Rim Shot 64 @
+38 (D) Electric Snare 1 64 Analog Snare 1 64 @
+39 (D#) @ @ @
+40 (E) Electric Snare 2 64 @ @
+41 (F) Electric Low Tom 2 34 Analog Low Tom 2 34 @
+42 (F#) @ Analog CHH 1 [EXC1] 84 @
+43 (G) Electric Low Tom 1 46 Analog Low Tom 1 46 @
+44 (G#) @ Analog CHH 2 [EXC1] 84 @
+45 (A) Electric Mid Tom 2 58 Analog Mid Tom 2 58 @
+46 (A#) @ Analog OHH [EXC1] 84 @
+47 (B) Electric Mid Tom 1 70 Analog Mid Tom 1 70 @
+48 (C) Electric Hi Tom 2 82 Analog Hi Tom 2 82 @
+49 (C#) @ Analog Cymbal 84 @
+50 (D) Electric Hi Tom 1 94 Analog Hi Tom 1 94 @
+51 (D#) @ @ @
+52 (E) Reverse Cymbal 44 @ @
+53 (F) @ @ @
+54 (F#) @ @ @
+55 (G) @ @ @
+56 (G#) @ Analog Cowbell 84 @
+57 (A) @ @ @
+58 (A#) @ @ @
+59 (B) @ @ @
+60 (MID C) @ @ @
+61 (C#) @ @ @
+62 (D) @ Analog High Conga 39 @
+63 (D#) @ Analog Mid Conga 44 @
+64 (E) @ Analog Low Conga 49 @
+65 (F) @ @ @
+66 (F#) @ @ @
+67 (G) @ @ @
+68 (G#) @ @ @
+69 (A) @ @ @
+70 (A#) @ Analog Maracas 24 @
+71 (B) @ @ @
+72 (C) @ @ @
+73 (C#) @ @ @
+74 (D) @ @ @
+75 (D#) @ Analog Claves 84 @
+76 (E) @ @ @
+77 (F) @ @ @
+78 (F#) @ @ @
+79 (G) @ @ @
+80 (G#) @ @ @
+81 (A) @ @ @
+82 (A#) @ @ @
+83 (B) @ @ @
+84 (C) @ @ @
+85 (C#) @ @ @
+86 (D) @ @ @
+87 (D#) @ @ @
+88 (E) --- --- ---

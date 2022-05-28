@@ -6,8 +6,8 @@ import pandas as pd
 
 from ..data.midi import MIDI_CC, DRUM_PROG, MIDI_GM1, DRUM_KEYMAP, MIDIMESSAGE
 from ..data.notes import NDICT
-from .._utils import timer
-from .utils import MidiUtils
+from .._utils import timer, _list
+from .utils import MidiUtils, play_bytes
 
 
 
@@ -109,6 +109,19 @@ channels: {self.channel_list}
             if t:
                 return self._df[(self._df.type == t)]
 
+    def send_midi(self, channel='all', **kwargs):
+        data = self._df[self._df.type != 'sysex']
+        if channel != 'all':
+            ch = _list(channel)
+            data = data[data.isin(ch)]
+        note_bytes = data._bytes.tolist()
+        durations = data._duration.tolist()
+        play_bytes(note_bytes,
+                   tick_durations=durations,
+                   ticks_per_beat=self.ticks_per_beat,
+                   bpm=self.bpm,
+                   **kwargs)
+
     def __getitem__(self, number):
         if type(number) == int:
             return None
@@ -163,7 +176,8 @@ channels: {self.channel_list}
              '_miditime':     _miditime,
              '_duration':     time_to_next,
              'tick_time':    tick_time,
-             '_hex_msg':      msg
+             '_hex_msg':      msg,
+             '_bytes':    [i.bytes() for i in track]
             })
             off = df[(df.type == 'note_on') & (df.data2 == 0)].index.values
             df.loc[off, 'type'] = 'note_off'

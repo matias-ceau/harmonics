@@ -29,6 +29,7 @@ src/harmonics/bot/__pycache__/__init__.cpython-310.pyc
 src/harmonics/bot/__pycache__/bot.cpython-310.pyc
 src/harmonics/data/__init__.py
 src/harmonics/data/chords.py
+src/harmonics/data/drums.py
 src/harmonics/data/general.py
 src/harmonics/data/intervals.py
 src/harmonics/data/midi.py
@@ -37,6 +38,7 @@ src/harmonics/data/patterns.py
 src/harmonics/data/scales.py
 src/harmonics/data/__pycache__/__init__.cpython-310.pyc
 src/harmonics/data/__pycache__/chords.cpython-310.pyc
+src/harmonics/data/__pycache__/drums.cpython-310.pyc
 src/harmonics/data/__pycache__/general.cpython-310.pyc
 src/harmonics/data/__pycache__/intervals.cpython-310.pyc
 src/harmonics/data/__pycache__/midi.cpython-310.pyc
@@ -75,3 +77,4 @@ src/harmonics/theory/cantus.py
 src/harmonics/theory/functions.py
 src/harmonics/theory/voice.py
 src/scripts/__init__.py
+src/scripts/__pycache__/__init__.cpython-310.pyc

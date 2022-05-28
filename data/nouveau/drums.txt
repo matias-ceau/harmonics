@@ -1,0 +1,40 @@
+/4/
+B: /oo/
+H: /!!hhhhh/
+
+<Standard Set> 
+Closed HH (42) / Pedal HH (44) / Open HH (46) 
+Short Whistle (71) / Long Whistle (72)
+Short Guiro (73) / Long Guiro (74) 
+Mute Cuica (78) / Open Cuica (79) 
+Mute Triangle (80) / Open Triangle (81)
+Scratch Push (29) / Scratch Pull (30) 
+Mute Surdo (86) / Open Surdo (87) 
+
+<Analog Set>
+Analog CHH 1 (42) / Analog CHH 2 (44) / Analog OHH (46)
+
+<Orchestra Set>
+Closed HH 2 (27) / Pedal HH (28) / Open HH 2 (29)
+
+<SFX Set>
+Scratch Push (41) / Scratch Pull (42) 
+
+
+New MIDI CCs:
+
+* CC 1 : (Mod wheel) assignable via CC 91, defaults to Pitch Mod Depth
+
+* CC 85: Chorus on/off. value < 64 off, value >= 64 on.
+
+* CC 86: Chorus stereo width, 64 is default
+
+* CC 87: Chorus speed, 64 is default
+
+* CC 88: Load patch, value 0-4: patch 1, 5-8: patch 2 etc up to 127
+
+* CC 89: Load pattern, value 0-8: pattern 1, 9-16: pattern 2 etc up to 127
+
+* CC 90: Tempo divisor, value 0-31: 1/1, 32-63: 1/2, 64-95: 1/4, 96-127: 1/8 (!)
+
+* CC 91: Mod wheel mapping: decides what MIDI CC mod wheel should map to. Example: value 42 sent on CC 91 -> Mod wheel now controls Modulator Attack
