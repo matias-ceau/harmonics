@@ -1,0 +1,257 @@
+,group,prog_user,PROG,MSB,LSB,PROG_H,MSB_H,LSB_H,GM2_timbre,key_range
+0,Piano,1,0,121,0,00H,79H,00H,Acoustic Grand Piano,21-108
+1,Piano,1,0,121,1,00H,79H,01H,Acoustic Grand Piano (wide),21-108
+2,Piano,1,0,121,2,00H,79H,02H,Acoustic Grand Piano (dark),21-108
+3,Piano,2,1,121,0,01H,79H,00H,Bright Acoustic Piano,21-108
+4,Piano,2,1,121,1,01H,79H,01H,Bright Acoustic Piano (wide),21-108
+5,Piano,3,2,121,0,02H,79H,00H,Electric Grand Piano,21-108
+6,Piano,3,2,121,1,02H,79H,01H,Electric Grand Piano (wide),21-108
+7,Piano,4,3,121,0,03H,79H,00H,Honky-tonk Piano,21-108
+8,Piano,4,3,121,1,03H,79H,01H,Honky-tonk Piano (wide),21-108
+9,Piano,5,4,121,0,04H,79H,00H,Electric Piano 1,28-103
+10,Piano,5,4,121,1,04H,79H,01H,Detuned Electric Piano 1,28-103
+11,Piano,5,4,121,2,04H,79H,02H,Electric Piano 1 (velocity mix),28-103
+12,Piano,5,4,121,3,04H,79H,03H,60's Electric Piano,28-103
+13,Piano,6,5,121,0,05H,79H,00H,Electric Piano 2,28-103
+14,Piano,6,5,121,1,05H,79H,01H,Detuned Electric Piano 2,28-103
+15,Piano,6,5,121,2,05H,79H,02H,Electric Piano 2 (velocity mix),28-103
+16,Piano,6,5,121,3,05H,79H,03H,EP Legend,28-103
+17,Piano,6,5,121,4,05H,79H,04H,EP Phase,28-103
+18,Piano,7,6,121,0,06H,79H,00H,Harpsichord,41-89
+19,Piano,7,6,121,1,06H,79H,01H,Harpsichord (octave mix),41-89
+20,Piano,7,6,121,2,06H,79H,02H,Harpsichord (wide),41-89
+21,Piano,7,6,121,3,06H,79H,03H,Harpsichord (with key off),41-89
+22,Piano,8,7,121,0,07H,79H,00H,Clavi,36-96
+23,Piano,8,7,121,1,07H,79H,01H,Pulse Clavi,36-96
+24,Chromatic Percussion,9,8,121,0,08H,79H,00H,Celesta,60-108
+25,Chromatic Percussion,10,9,121,0,09H,79H,00H,Glockenspiel,72-108
+26,Chromatic Percussion,11,10,121,0,0AH,79H,00H,Music Box,60-84
+27,Chromatic Percussion,12,11,121,0,0BH,79H,00H,Vibraphone,53-89
+28,Chromatic Percussion,12,11,121,1,0BH,79H,01H,Vibraphone (wide),53-89
+29,Chromatic Percussion,13,12,121,0,0CH,79H,00H,Marimba,48-84
+30,Chromatic Percussion,13,12,121,1,0CH,79H,01H,Marimba (wide),48-84
+31,Chromatic Percussion,14,13,121,0,0DH,79H,00H,Xylophone,65-96
+32,Chromatic Percussion,15,14,121,0,0EH,79H,00H,Tubular Bells,60-77
+33,Chromatic Percussion,15,14,121,1,0EH,79H,01H,Church Bell,60-77
+34,Chromatic Percussion,15,14,121,2,0EH,79H,02H,Carillon,60-77
+35,Chromatic Percussion,16,15,121,0,0FH,79H,00H,Dulcimer,60-84
+36,Organ,17,16,121,0,10H,79H,00H,Drawbar Organ,36-96
+37,Organ,17,16,121,1,10H,79H,01H,Detuned Drawbar Organ,36-96
+38,Organ,17,16,121,2,10H,79H,02H,Italian 60's Organ,36-96
+39,Organ,17,16,121,3,10H,79H,03H,Drawbar Organ 2,36-96
+40,Organ,18,17,121,0,11H,79H,00H,Percussive Organ,36-96
+41,Organ,18,17,121,1,11H,79H,01H,Detuned Percussive Organ,36-96
+42,Organ,18,17,121,2,11H,79H,02H,Percussive Organ 2,36-96
+43,Organ,19,18,121,0,12H,79H,00H,Rock Organ,36-96
+44,Organ,20,19,121,0,13H,79H,00H,Church Organ,21-108
+45,Organ,20,19,121,1,13H,79H,01H,Church Organ (octave mix),21-108
+46,Organ,20,19,121,2,13H,79H,02H,Detuned Church Organ,21-108
+47,Organ,21,20,121,0,14H,79H,00H,Reed Organ,36-96
+48,Organ,21,20,121,1,14H,79H,01H,Puff Organ,36-96
+49,Organ,22,21,121,0,15H,79H,00H,Accordion,53-89
+50,Organ,22,21,121,1,15H,79H,01H,Accordion 2,53-89
+51,Organ,23,22,121,0,16H,79H,00H,Harmonica,60-84
+52,Organ,24,23,121,0,17H,79H,00H,Tango Accordion,53-89
+53,Guitar,25,24,121,0,18H,79H,00H,Acoustic Guitar (nylon),40-84
+54,Guitar,25,24,121,1,18H,79H,01H,Ukulele,40-84
+55,Guitar,25,24,121,2,18H,79H,02H,Acoustic Guitar (nylon + key off),40-84
+56,Guitar,25,24,121,3,18H,79H,03H,Acoustic Guitar (nylon 2),40-84
+57,Guitar,26,25,121,0,19H,79H,00H,Acoustic Guitar (steel),40-84
+58,Guitar,26,25,121,1,19H,79H,01H,12-Strings Guitar,40-84
+59,Guitar,26,25,121,2,19H,79H,02H,Mandolin,40-84
+60,Guitar,26,25,121,3,19H,79H,03H,Steel Guitar with Body Sound,40-84
+61,Guitar,27,26,121,0,1AH,79H,00H,Electric Guitar (jazz),40-86
+62,Guitar,27,26,121,1,1AH,79H,01H,Electric Guitar (pedal steel),40-86
+63,Guitar,28,27,121,0,1BH,79H,00H,Electric Guitar (clean),40-86
+64,Guitar,28,27,121,1,1BH,79H,01H,Electric Guitar (detuned clean),40-86
+65,Guitar,28,27,121,2,1BH,79H,02H,Mid Tone Guitar,40-86
+66,Guitar,29,28,121,0,1CH,79H,00H,Electric Guitar (muted),40-86
+67,Guitar,29,28,121,1,1CH,79H,01H,Electric Guitar (funky cutting),40-86
+68,Guitar,29,28,121,2,1CH,79H,02H,Electric Guitar (muted velo-sw),40-86
+69,Guitar,29,28,121,3,1CH,79H,03H,Jazz Man,40-86
+70,Guitar,30,29,121,0,1DH,79H,00H,Overdriven Guitar,40-86
+71,Guitar,30,29,121,1,1DH,79H,01H,Guitar Pinch,40-86
+72,Guitar,31,30,121,0,1EH,79H,00H,Distortion Guitar,40-86
+73,Guitar,31,30,121,1,1EH,79H,01H,Distortion Guitar (with feedback),40-86
+74,Guitar,31,30,121,2,1EH,79H,02H,Distorted Rhythm Guitar,40-86
+75,Guitar,32,31,121,0,1FH,79H,00H,Guitar Harmonics,40-86
+76,Guitar,32,31,121,1,1FH,79H,01H,Guitar Feedback,40-86
+77,Bass,33,32,121,0,20H,79H,00H,Acoustic Bass,28-55
+78,Bass,34,33,121,0,21H,79H,00H,Electric Bass (finger),28-55
+79,Bass,34,33,121,1,21H,79H,01H,Finger Slap Bass,28-55
+80,Bass,35,34,121,0,22H,79H,00H,Electric Bass (pick),28-55
+81,Bass,36,35,121,0,23H,79H,00H,Fretless Bass,28-55
+82,Bass,37,36,121,0,24H,79H,00H,Slap Bass 1,28-55
+83,Bass,38,37,121,0,25H,79H,00H,Slap Bass 2,28-55
+84,Bass,39,38,121,0,26H,79H,00H,Synth Bass 1,28-55
+85,Bass,39,38,121,1,26H,79H,01H,Synth Bass (warm),28-55
+86,Bass,39,38,121,2,26H,79H,02H,Synth Bass 3 (resonance),28-55
+87,Bass,39,38,121,3,26H,79H,03H,Clavi Bass,28-55
+88,Bass,39,38,121,4,26H,79H,04H,Hammer,28-55
+89,Bass,40,39,121,0,27H,79H,00H,Synth Bass 2,28-55
+90,Bass,40,39,121,1,27H,79H,01H,Synth Bass 4 (attack),28-55
+91,Bass,40,39,121,2,27H,79H,02H,Synth Bass (rubber),28-55
+92,Bass,40,39,121,3,27H,79H,03H,Attack Pulse,28-55
+93,Strings & Orchestral instruments,41,40,121,0,28H,79H,00H,Violin,55-96
+94,Strings & Orchestral instruments,41,40,121,1,28H,79H,01H,Violin (slow attack),55-96
+95,Strings & Orchestral instruments,42,41,121,0,29H,79H,00H,Viola,48-84
+96,Strings & Orchestral instruments,43,42,121,0,2AH,79H,00H,Cello,36-72
+97,Strings & Orchestral instruments,44,43,121,0,2BH,79H,00H,Contrabass,28-55
+98,Strings & Orchestral instruments,45,44,121,0,2CH,79H,00H,Tremolo Strings,28-96
+99,Strings & Orchestral instruments,46,45,121,0,2DH,79H,00H,Pizzicato Strings,28-96
+100,Strings & Orchestral instruments,47,46,121,0,2EH,79H,00H,Orchestral Harp,23-103
+101,Strings & Orchestral instruments,47,46,121,1,2EH,79H,01H,Yang Chin,23-103
+102,Strings & Orchestral instruments,48,47,121,0,2FH,79H,00H,Timpani,36-57
+103,Ensemble,49,48,121,0,30H,79H,00H,String Ensembles 1,28-96
+104,Ensemble,49,48,121,1,30H,79H,01H,Strings and Brass,28-96
+105,Ensemble,49,48,121,2,30H,79H,02H,60s Strings,28-96
+106,Ensemble,50,49,121,0,31H,79H,00H,String Ensembles 2,28-96
+107,Ensemble,51,50,121,0,32H,79H,00H,SynthStrings 1,36-96
+108,Ensemble,51,50,121,1,32H,79H,01H,SynthStrings 3,36-96
+109,Ensemble,52,51,121,0,33H,79H,00H,SynthStrings 2,36-96
+110,Ensemble,53,52,121,0,34H,79H,00H,Choir Aahs,48-79
+111,Ensemble,53,52,121,1,34H,79H,01H,Choir Aahs 2,48-79
+112,Ensemble,54,53,121,0,35H,79H,00H,Voice Oohs,48-79
+113,Ensemble,54,53,121,1,35H,79H,01H,Humming,48-79
+114,Ensemble,55,54,121,0,36H,79H,00H,Synth Voice,48-84
+115,Ensemble,55,54,121,1,36H,79H,01H,Analog Voice,48-84
+116,Ensemble,56,55,121,0,37H,79H,00H,Orchestra Hit,48-72
+117,Ensemble,56,55,121,1,37H,79H,01H,Bass Hit Plus,48-72
+118,Ensemble,56,55,121,2,37H,79H,02H,6th Hit,48-72
+119,Ensemble,56,55,121,3,37H,79H,03H,Euro Hit,48-72
+120,Brass,57,56,121,0,38H,79H,00H,Trumpet,58-94
+121,Brass,57,56,121,1,38H,79H,01H,Dark Trumpet Soft,58-94
+122,Brass,58,57,121,0,39H,79H,00H,Trombone,34-75
+123,Brass,58,57,121,1,39H,79H,01H,Trombone 2,34-75
+124,Brass,58,57,121,2,39H,79H,02H,Bright Trombone,34-75
+125,Brass,59,58,121,0,3AH,79H,00H,Tuba,29-55
+126,Brass,60,59,121,0,3BH,79H,00H,Muted Trumpet,58-82
+127,Brass,60,59,121,1,3BH,79H,01H,Muted Trumpet 2,58-82
+128,Brass,61,60,121,0,3CH,79H,00H,French Horn,41-77
+129,Brass,61,60,121,1,3CH,79H,01H,French Horn 2 (warm),41-77
+130,Brass,62,61,121,0,3DH,79H,00H,Brass Section,36-96
+131,Brass,62,61,121,1,3DH,79H,01H,Brass Section 2 (octave mix),36-96
+132,Brass,63,62,121,0,3EH,79H,00H,Synth Brass 1,36-96
+133,Brass,63,62,121,1,3EH,79H,01H,Synth Brass 3,36-96
+134,Brass,63,62,121,2,3EH,79H,02H,Analog Synth Brass 1,36-96
+135,Brass,63,62,121,3,3EH,79H,03H,Jump Brass,36-96
+136,Brass,64,63,121,0,3FH,79H,00H,Synth Brass 2,36-96
+137,Brass,64,63,121,1,3FH,79H,01H,Synth Brass 4,36-96
+138,Brass,64,63,121,2,3FH,79H,02H,Analog Synth Brass 2,36-96
+139,Reed,65,64,121,0,40H,79H,00H,Soprano Sax,54-87
+140,Reed,66,65,121,0,41H,79H,00H,Alto Sax,49-80
+141,Reed,67,66,121,0,42H,79H,00H,Tenor Sax,42-75
+142,Reed,68,67,121,0,43H,79H,00H,Baritone Sax,37-68
+143,Reed,69,68,121,0,44H,79H,00H,Oboe,58-91
+144,Reed,70,69,121,0,45H,79H,00H,English Horn,52-81
+145,Reed,71,70,121,0,46H,79H,00H,Bassoon,34-72
+146,Reed,72,71,121,0,47H,79H,00H,Clarinet,50-91
+147,Pipe,73,72,121,0,48H,79H,00H,Piccolo,74-108
+148,Pipe,74,73,121,0,49H,79H,00H,Flute,60-96
+149,Pipe,75,74,121,0,4AH,79H,00H,Recorder,60-96
+150,Pipe,76,75,121,0,4BH,79H,00H,Pan Flute,60-96
+151,Pipe,77,76,121,0,4CH,79H,00H,Blown Bottle,60-96
+152,Pipe,78,77,121,0,4DH,79H,00H,Shakuhachi,55-84
+153,Pipe,79,78,121,0,4EH,79H,00H,Whistle,60-96
+154,Pipe,80,79,121,0,4FH,79H,00H,Ocarina,60-84
+155,Synth Lead,81,80,121,0,50H,79H,00H,Lead 1 (square),21-108
+156,Synth Lead,81,80,121,1,50H,79H,01H,Lead 1a (square 2),21-108
+157,Synth Lead,81,80,121,2,50H,79H,02H,Lead 1b (sine),21-108
+158,Synth Lead,82,81,121,0,51H,79H,00H,Lead 2 (sawtooth),21-108
+159,Synth Lead,82,81,121,1,51H,79H,01H,Lead 2a (sawtooth 2),21-108
+160,Synth Lead,82,81,121,2,51H,79H,02H,Lead 2b (saw + pulse),21-108
+161,Synth Lead,82,81,121,3,51H,79H,03H,Lead 2c (double sawtooth),21-108
+162,Synth Lead,82,81,121,4,51H,79H,04H,Lead 2d (sequenced analog),21-108
+163,Synth Lead,83,82,121,0,52H,79H,00H,Lead 3 (calliope),36-96
+164,Synth Lead,84,83,121,0,53H,79H,00H,Lead 4 (chiff),36-96
+165,Synth Lead,85,84,121,0,54H,79H,00H,Lead 5 (charang),36-96
+166,Synth Lead,85,84,121,1,54H,79H,01H,Lead 5a (wire lead),36-96
+167,Synth Lead,86,85,121,0,55H,79H,00H,Lead 6 (voice),36-96
+168,Synth Lead,87,86,121,0,56H,79H,00H,Lead 7 (fifths),36-96
+169,Synth Lead,88,87,121,0,57H,79H,00H,Lead 8 (bass + lead),21-108
+170,Synth Lead,88,87,121,1,57H,79H,01H,Lead 8a (soft wrl),21-108
+171,Synth Pad,89,88,121,0,58H,79H,00H,Pad 1 (new age),36-96
+172,Synth Pad,90,89,121,0,59H,79H,00H,Pad 2 (warm),36-96
+173,Synth Pad,90,89,121,1,59H,79H,01H,Pad 2a (sine pad),36-96
+174,Synth Pad,91,90,121,0,5AH,79H,00H,Pad 3 (polysynth),36-96
+175,Synth Pad,92,91,121,0,5BH,79H,00H,Pad 4 (choir),36-96
+176,Synth Pad,92,91,121,1,5BH,79H,01H,Pad 4a (itopia),36-96
+177,Synth Pad,93,92,121,0,5CH,79H,00H,Pad 5 (bowed),36-96
+178,Synth Pad,94,93,121,0,5DH,79H,00H,Pad 6 (metallic),36-96
+179,Synth Pad,95,94,121,0,5EH,79H,00H,Pad 7 (halo),36-96
+180,Synth Pad,96,95,121,0,5FH,79H,00H,Pad 8 (sweep),36-96
+181,Synth SFX,97,96,121,0,60H,79H,00H,FX 1 (rain),36-96
+182,Synth SFX,98,97,121,0,61H,79H,00H,FX 2 (soundtrack),36-96
+183,Synth SFX,99,98,121,0,62H,79H,00H,FX 3 (crystal),36-96
+184,Synth SFX,99,98,121,1,62H,79H,01H,FX 3a (synth mallet),36-96
+185,Synth SFX,100,99,121,0,63H,79H,00H,FX 4 (atmosphere),36-96
+186,Synth SFX,101,100,121,0,64H,79H,00H,FX 5 (brightness),36-96
+187,Synth SFX,102,101,121,0,65H,79H,00H,FX 6 (goblins),36-96
+188,Synth SFX,103,102,121,0,66H,79H,00H,FX 7 (echoes),36-96
+189,Synth SFX,103,102,121,1,66H,79H,01H,FX 7a (echo bell),36-96
+190,Synth SFX,103,102,121,2,66H,79H,02H,FX 7b (echo pan),36-96
+191,Synth SFX,104,103,121,0,67H,79H,00H,FX 8 (sci-fi),36-96
+192,Ethnic Misc.,105,104,121,0,68H,79H,00H,Sitar,48-77
+193,Ethnic Misc.,105,104,121,1,68H,79H,01H,Sitar 2 (bend),48-77
+194,Ethnic Misc.,106,105,121,0,69H,79H,00H,Banjo,48-84
+195,Ethnic Misc.,107,106,121,0,6AH,79H,00H,Shamisen,50-79
+196,Ethnic Misc.,108,107,121,0,6BH,79H,00H,Koto,55-84
+197,Ethnic Misc.,108,107,121,1,6BH,79H,01H,Taisho Koto,55-84
+198,Ethnic Misc.,109,108,121,0,6CH,79H,00H,Kalimba,48-79
+199,Ethnic Misc.,110,109,121,0,6DH,79H,00H,Bag pipe,36-77
+200,Ethnic Misc.,111,110,121,0,6EH,79H,00H,Fiddle,55-96
+201,Ethnic Misc.,112,111,121,0,6FH,79H,00H,Shanai,48-72
+202,Percussive,113,112,121,0,70H,79H,00H,Tinkle Bell,72-84
+203,Percussive,114,113,121,0,71H,79H,00H,Agogo,60-72
+204,Percussive,115,114,121,0,72H,79H,00H,Steel Drums,52-76
+205,Percussive,116,115,121,0,73H,79H,00H,Woodblock,*
+206,Percussive,116,115,121,1,73H,79H,01H,Castanets,*
+207,Percussive,117,116,121,0,74H,79H,00H,Taiko Drum,*
+208,Percussive,117,116,121,1,74H,79H,01H,Concert Bass Drum,*
+209,Percussive,118,117,121,0,75H,79H,00H,Melodic Tom,*
+210,Percussive,118,117,121,1,75H,79H,01H,Melodic Tom 2 (power),*
+211,Percussive,119,118,121,0,76H,79H,00H,Synth Drum,*
+212,Percussive,119,118,121,1,76H,79H,01H,Rhythm Box Tom,*
+213,Percussive,119,118,121,2,76H,79H,02H,Electric Drum,*
+214,Percussive,120,119,121,0,77H,79H,00H,Reverse Cymbal,*
+215,SFX,121,120,121,0,78H,79H,00H,Guitar Fret Noise,*
+216,SFX,121,120,121,1,78H,79H,01H,Guitar Cutting Noise,*
+217,SFX,121,120,121,2,78H,79H,02H,Acoustic Bass String Slap,*
+218,SFX,122,121,121,0,79H,79H,00H,Breath Noise,*
+219,SFX,122,121,121,1,79H,79H,01H,Flute Key Click,*
+220,SFX,123,122,121,0,7AH,79H,00H,Seashore,*
+221,SFX,123,122,121,1,7AH,79H,01H,Rain,*
+222,SFX,123,122,121,2,7AH,79H,02H,Thunder,*
+223,SFX,123,122,121,3,7AH,79H,03H,Wind,*
+224,SFX,123,122,121,4,7AH,79H,04H,Stream,*
+225,SFX,123,122,121,5,7AH,79H,05H,Bubble,*
+226,SFX,124,123,121,0,7BH,79H,00H,Bird Tweet,*
+227,SFX,124,123,121,1,7BH,79H,01H,Dog,*
+228,SFX,124,123,121,2,7BH,79H,02H,Horse Gallop,*
+229,SFX,124,123,121,3,7BH,79H,03H,Bird Tweet 2,*
+230,SFX,125,124,121,0,7CH,79H,00H,Telephone Ring,*
+231,SFX,125,124,121,1,7CH,79H,01H,Telephone Ring 2,*
+232,SFX,125,124,121,2,7CH,79H,02H,Door Creaking,*
+233,SFX,125,124,121,3,7CH,79H,03H,Door,*
+234,SFX,125,124,121,4,7CH,79H,04H,Scratch,*
+235,SFX,125,124,121,5,7CH,79H,05H,Wind Chime,*
+236,SFX,126,125,121,0,7DH,79H,00H,Helicopter,*
+237,SFX,126,125,121,1,7DH,79H,01H,Car Engine,*
+238,SFX,126,125,121,2,7DH,79H,02H,Car Stop,*
+239,SFX,126,125,121,3,7DH,79H,03H,Car Pass,*
+240,SFX,126,125,121,4,7DH,79H,04H,Car Crash,*
+241,SFX,126,125,121,5,7DH,79H,05H,Siren,*
+242,SFX,126,125,121,6,7DH,79H,06H,Train,*
+243,SFX,126,125,121,7,7DH,79H,07H,Jetplane,*
+244,SFX,126,125,121,8,7DH,79H,08H,Starship,*
+245,SFX,126,125,121,9,7DH,79H,09H,Burst Noise,*
+246,SFX,127,126,121,0,7EH,79H,00H,Applause,*
+247,SFX,127,126,121,1,7EH,79H,01H,Laughing,*
+248,SFX,127,126,121,2,7EH,79H,02H,Screaming,*
+249,SFX,127,126,121,3,7EH,79H,03H,Punch,*
+250,SFX,127,126,121,4,7EH,79H,04H,Heart Beat,*
+251,SFX,127,126,121,5,7EH,79H,05H,Footsteps,*
+252,SFX,128,127,121,0,7FH,79H,00H,Gunshot,*
+253,SFX,128,127,121,1,7FH,79H,01H,Machine Gun,*
+254,SFX,128,127,121,2,7FH,79H,02H,Lasergun,*
+255,SFX,128,127,121,3,7FH,79H,03H,Explosion,*
