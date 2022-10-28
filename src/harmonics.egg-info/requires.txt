@@ -5,3 +5,5 @@ pyyaml
 datetime
 seaborn
 matplotlib
+mido
+rtmidi

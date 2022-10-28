@@ -45,6 +45,8 @@ src/harmonics/data/__pycache__/midi.cpython-310.pyc
 src/harmonics/data/__pycache__/notes.cpython-310.pyc
 src/harmonics/data/__pycache__/patterns.cpython-310.pyc
 src/harmonics/data/__pycache__/scales.cpython-310.pyc
+src/harmonics/groove/__init__.py
+src/harmonics/groove/__pycache__/__init__.cpython-310.pyc
 src/harmonics/midi/__init__.py
 src/harmonics/midi/extract.py
 src/harmonics/midi/utils.py
