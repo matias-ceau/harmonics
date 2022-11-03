@@ -3,4 +3,4 @@
 # EUCLIDIAN sequencer
 # simplified notation player
 
-from .sequencer import read_file
+from .sequencer import Sequencer, play_dna, play_aa

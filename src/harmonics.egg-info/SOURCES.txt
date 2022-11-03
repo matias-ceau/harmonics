@@ -52,6 +52,7 @@ src/harmonics/data/__pycache__/scales.cpython-310.pyc
 src/harmonics/groove/__init__.py
 src/harmonics/groove/sequencer.py
 src/harmonics/groove/__pycache__/__init__.cpython-310.pyc
+src/harmonics/groove/__pycache__/sequencer.cpython-310.pyc
 src/harmonics/melody/__init__.py
 src/harmonics/melody/__pycache__/__init__.cpython-310.pyc
 src/harmonics/midi/__init__.py
