@@ -1,5 +1,5 @@
 __pycache__/*
-logs/
-results/
-old_results/
-trials/
+logs/*
+results/*
+old_results/*
+trials/*
