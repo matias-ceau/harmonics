@@ -1,6 +1,6 @@
 from ..data.intervals import IDICT, INAMES, INTERVALS, EDICT
 
-class Interval():
+class Interval:
 
     """Encapsulates the concept of an interval."""
 

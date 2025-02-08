@@ -14,3 +14,12 @@ Classifier: Operating System :: Unix
 Classifier: Intended Audience :: Science/Research
 Description-Content-Type: text/markdown
 License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: pandas
+Requires-Dist: pyyaml
+Requires-Dist: datetime
+Requires-Dist: seaborn
+Requires-Dist: matplotlib
+Requires-Dist: mido
+Requires-Dist: python-rtmidi
