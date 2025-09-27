@@ -1,4 +1,4 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: harmonics
 Version: 0.0.0
 Summary: Music Analysis and Creation
@@ -23,3 +23,12 @@ Requires-Dist: seaborn
 Requires-Dist: matplotlib
 Requires-Dist: mido
 Requires-Dist: python-rtmidi
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: summary
