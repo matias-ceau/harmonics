@@ -244,8 +244,11 @@ Check [TODO.md](TODO.md) for areas needing help.
 
 ## Resources
 
+- **Documentation Index**: [DOCS.md](DOCS.md) - Complete documentation guide
 - **Repository**: https://github.com/matias-ceau/harmonics
 - **Issues**: https://github.com/matias-ceau/harmonics/issues
+- **Changelog**: [CHANGELOG.md](CHANGELOG.md)
+- **Roadmap**: [TODO.md](TODO.md)
 
 ## Citation
 
