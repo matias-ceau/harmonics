@@ -43,12 +43,15 @@ pip install -e ".[dev]"
 ### Music Theory
 
 ```python
-from harmonics.core import notes, scales, chords
+from harmonics.symbols import Note, Chord
+from harmonics.core import scales
 
-# Work with musical notes
-note = notes.Note("C4")
-scale = scales.Scale("C", "major")
-chord = chords.Chord("Cmaj7")
+# Work with musical notes and chords
+note = Note("C", octave=4, duration=1.0)
+chord = Chord("C", octave=4, chord_type="maj7")
+
+# Access scale definitions
+major_scale = scales.SCALES['Ionian mode']  # ['1', '2', '3', '4', '5', '6', '7']
 ```
 
 ### Algorithmic Composition
@@ -68,18 +71,22 @@ population, generations = cantus.run_evolution(
 ### Audio Analysis
 
 ```python
-from harmonics.processing.audio import get_harmonics
+from harmonics.processing.audio import Sampler
 
-# Extract harmonic content from audio
-harmonics_data = get_harmonics("audio_file.wav")
+# Create audio sampler for analysis
+sampler = Sampler("audio_file.wav")
+# Further processing with sampler methods
 ```
 
 ### MIDI Processing
 
 ```python
-from harmonics.processing.midi import extract_midi_data
+from harmonics.processing.midi import MidiReader, extract_midi_data
 
-# Extract and analyze MIDI data
+# Read and analyze MIDI files
+reader = MidiReader("song.mid")
+
+# Extract drum patterns from MIDI
 midi_data = extract_midi_data("song.mid")
 ```
 
@@ -224,13 +231,16 @@ GPL-3.0-or-later - See [LICENSE](LICENSE) for details.
 
 ## Contributing
 
-Contributions are welcome! Please:
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
+Quick start:
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes with tests
 4. Run linters and tests
 5. Submit a pull request
+
+Check [TODO.md](TODO.md) for areas needing help.
 
 ## Resources
 
